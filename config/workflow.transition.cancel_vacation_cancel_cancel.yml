@@ -1,0 +1,12 @@
+uuid: dd5d41ac-2155-4ed9-9692-e116f137978a
+langcode: en
+status: true
+dependencies:
+  config:
+    - workflow.state.cancel_vacation_cancel
+id: cancel_vacation_cancel_cancel
+label: ''
+module: workflow
+from_sid: cancel_vacation_cancel
+to_sid: cancel_vacation_cancel
+roles: {  }

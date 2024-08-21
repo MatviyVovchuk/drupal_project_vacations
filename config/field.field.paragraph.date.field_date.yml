@@ -1,0 +1,25 @@
+uuid: fdd25b1f-51ed-43da-b1ff-d79d80e3d947
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_date
+    - paragraphs.paragraphs_type.date
+  module:
+    - webform
+id: paragraph.date.field_date
+field_name: field_date
+entity_type: paragraph
+bundle: date
+label: Date
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:webform'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+field_type: webform

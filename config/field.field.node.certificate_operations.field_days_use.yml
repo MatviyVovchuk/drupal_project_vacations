@@ -1,0 +1,25 @@
+uuid: b7d5ab00-d408-454d-959c-af832803be0b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_days_use
+    - node.type.certificate_operations
+id: node.certificate_operations.field_days_use
+field_name: field_days_use
+entity_type: node
+bundle: certificate_operations
+label: 'Days involved'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

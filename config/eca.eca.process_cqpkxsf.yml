@@ -1,0 +1,1020 @@
+uuid: cf38ccee-0c7d-40b5-940f-edb0a27471ed
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.certificate.field_certificate_dates
+    - field.field.node.certificate.field_certificate_type
+    - field.field.node.certificate.field_days_left
+    - field.field.node.certificate.field_quantity_days
+    - field.field.node.certificate.field_user
+    - field.field.node.certificate_operations.field_action_date
+    - field.field.node.certificate_operations.field_certificate
+    - field.field.node.certificate_operations.field_certificate_state
+    - field.field.node.certificate_operations.field_days_use
+    - field.field.node.certificate_operations.field_user_vacation_balance
+    - field.field.user.user.field_vacation_balance_days
+    - field.storage.node.field_action_date
+    - field.storage.node.field_certificate
+    - field.storage.node.field_certificate_dates
+    - field.storage.node.field_certificate_state
+    - field.storage.node.field_certificate_type
+    - field.storage.node.field_days_left
+    - field.storage.node.field_days_use
+    - field.storage.node.field_quantity_days
+    - field.storage.node.field_user
+    - field.storage.node.field_user_vacation_balance
+    - field.storage.user.field_vacation_balance_days
+    - node.type.certificate
+    - node.type.certificate_operations
+  module:
+    - eca_base
+    - eca_content
+    - eca_form
+    - eca_log
+    - eca_queue
+    - eca_tamper
+    - eca_user
+    - node
+id: process_cqpkxsf
+modeller: bpmn_io
+label: 'Give bonus certificate'
+version: ''
+weight: -10
+events:
+  Event_1imn7y0:
+    plugin: 'content_entity:create'
+    label: 'Init Certificate'
+    configuration:
+      type: 'node certificate'
+    successors:
+      -
+        id: Activity_0tm4npv
+        condition: ''
+  Event_04y9q2n:
+    plugin: 'form:form_validate'
+    label: 'Validate Certificate'
+    configuration:
+      form_id: node-certificate-form
+      entity_type_id: ''
+      bundle: ''
+      operation: ''
+    successors:
+      -
+        id: Activity_0ihu1m7
+        condition: ''
+  Event_144ckug:
+    plugin: 'content_entity:insert'
+    label: 'Insert Certificate'
+    configuration:
+      type: 'node certificate'
+    successors:
+      -
+        id: Gateway_00fyic3
+        condition: ''
+  Event_0nxpjej:
+    plugin: 'content_entity:presave'
+    label: 'Presave Certificate'
+    configuration:
+      type: 'node certificate'
+    successors: {  }
+  Event_0foyvj9:
+    plugin: 'eca_queue:processing_task'
+    label: 'Process expiration bonus certificate task'
+    configuration:
+      distribute: false
+      task_name: expiration_bonus_certificate
+      task_value: ''
+      cron: ''
+    successors:
+      -
+        id: Activity_1r4w73k
+        condition: ''
+conditions:
+  Flow_0lqm5kl:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[node:field_certificate_type:entity:tid]'
+      right: '20'
+      operator: equal
+      type: value
+  Flow_05vt1ao:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[node:field_certificate_type:entity:tid]'
+      right: '21'
+      operator: equal
+      type: value
+  Flow_0quvli8:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[curr_date_raw]'
+      right: '[start_date_raw]'
+      operator: greaterthan
+      type: value
+  Flow_0t5vbrx:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[certificate:field_quantity_days:value]'
+      right: '14'
+      operator: greaterthan
+      type: value
+  Flow_1kq71h5:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[certificate:field_certificate_type:entity:tid]'
+      right: '20'
+      operator: equal
+      type: value
+  Flow_09jvw07:
+    plugin: eca_scalar
+    configuration:
+      case: false
+      left: '[current-date:custom:Y-m-d]'
+      right: '[certificate:field_certificate_dates:start_date:custom:Y-m-d]'
+      operator: equal
+      type: value
+      negate: true
+  Flow_12d6ox5:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[node:field_days_left:value]'
+      right: '0'
+      operator: equal
+      type: value
+  Flow_0jh54v1:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[certificate:field_quantity_days:value]'
+      right: '0'
+      operator: equal
+      type: value
+gateways:
+  Gateway_17twg62:
+    type: 0
+    successors:
+      -
+        id: Activity_1gpyc5i
+        condition: ''
+      -
+        id: Gateway_0wawfy9
+        condition: ''
+  Gateway_0wawfy9:
+    type: 0
+    successors:
+      -
+        id: Activity_0fo0l7i
+        condition: Flow_0t5vbrx
+      -
+        id: Gateway_09fdkxi
+        condition: ''
+  Gateway_0ayosgb:
+    type: 0
+    successors:
+      -
+        id: Activity_0eassze
+        condition: Flow_05vt1ao
+  Gateway_09fdkxi:
+    type: 0
+    successors:
+      -
+        id: Gateway_1e1ro43
+        condition: Flow_1kq71h5
+      -
+        id: Gateway_0r8duam
+        condition: ''
+  Gateway_1e1ro43:
+    type: 0
+    successors:
+      -
+        id: Activity_009dr0x
+        condition: Flow_09jvw07
+  Gateway_00fyic3:
+    type: 0
+    successors:
+      -
+        id: Gateway_1rdfqu5
+        condition: Flow_0lqm5kl
+  Gateway_1rdfqu5:
+    type: 0
+    successors:
+      -
+        id: Activity_1lt1edx
+        condition: Flow_12d6ox5
+  Gateway_0r8duam:
+    type: 0
+    successors:
+      -
+        id: Gateway_111gw47
+        condition: Flow_0jh54v1
+  Gateway_111gw47:
+    type: 0
+    successors:
+      -
+        id: Activity_09bgx6n
+        condition: ''
+actions:
+  Activity_0x79hpf:
+    plugin: eca_set_field_value
+    label: 'Set title'
+    configuration:
+      field_name: title
+      field_value: Certificate
+      method: 'set:clear'
+      strip_tags: false
+      trim: false
+      save_entity: false
+      object: node
+    successors: {  }
+  Activity_1lt1edx:
+    plugin: eca_switch_account
+    label: 'Swich user'
+    configuration:
+      user_id: '1'
+    successors:
+      -
+        id: Activity_0k0qlgy
+        condition: ''
+  Activity_0eassze:
+    plugin: eca_set_field_value
+    label: 'Set title DEFAULT'
+    configuration:
+      field_name: title
+      field_value: 'Certificate #[node:nid]'
+      method: 'set:clear'
+      strip_tags: false
+      trim: false
+      save_entity: true
+      object: node
+    successors: {  }
+  Activity_0rm1y2a:
+    plugin: eca_set_field_value
+    label: 'Set title BONUS'
+    configuration:
+      field_name: title
+      field_value: 'Bonus Certificate #[node:nid]'
+      method: 'set:clear'
+      strip_tags: false
+      trim: false
+      save_entity: false
+      object: node
+    successors:
+      -
+        id: Activity_1hef971
+        condition: ''
+  Activity_1hef971:
+    plugin: eca_set_field_value
+    label: 'Set field_days_left'
+    configuration:
+      field_name: field_days_left
+      field_value: '[node:field_quantity_days:value]'
+      method: 'set:clear'
+      strip_tags: false
+      trim: false
+      save_entity: true
+      object: node
+    successors:
+      -
+        id: Activity_0iijctz
+        condition: ''
+  Activity_11edkx3:
+    plugin: eca_enqueue_task_delayed
+    label: 'Delay task expiration certificate'
+    configuration:
+      delay_value: '16'
+      delay_unit: '60'
+      task_name: expiration_bonus_certificate
+      task_value: ''
+      tokens: 'new_certificate, this-user'
+    successors: {  }
+  Activity_0iijctz:
+    plugin: eca_token_set_value
+    label: 'Set token new_certificate'
+    configuration:
+      token_name: new_certificate
+      token_value: '[node]'
+      use_yaml: false
+    successors:
+      -
+        id: Activity_1lqjrxs
+        condition: ''
+  Activity_1lqjrxs:
+    plugin: eca_token_set_value
+    label: 'Set token this-user'
+    configuration:
+      token_name: this-user
+      token_value: '[node:field_user:entity]'
+      use_yaml: false
+    successors:
+      -
+        id: Activity_180tkz0
+        condition: ''
+  Activity_0ihu1m7:
+    plugin: eca_switch_account
+    label: 'Swich user'
+    configuration:
+      user_id: '1'
+    successors:
+      -
+        id: Activity_13jhlyr
+        condition: ''
+  Activity_1gpyc5i:
+    plugin: 'eca_tamper:strtotime'
+    label: 'Curr Date to timestamp'
+    configuration:
+      eca_data: '[current-date:custom:Y-m-d]'
+      eca_token_name: '[curr_date_raw]'
+    successors:
+      -
+        id: Activity_195yfr6
+        condition: ''
+  Activity_195yfr6:
+    plugin: 'eca_tamper:strtotime'
+    label: 'Start Date to timestamp'
+    configuration:
+      eca_data: '[certificate:field_certificate_dates:start_date:custom:Y-m-d]'
+      eca_token_name: '[start_date_raw]'
+    successors:
+      -
+        id: Activity_0a9yxqk
+        condition: Flow_0quvli8
+  Activity_0a9yxqk:
+    plugin: eca_write_log_message
+    label: msg
+    configuration:
+      channel: eca
+      severity: '3'
+      message: |-
+        ERROR CANT TAKE VAC FOR DATE LESS THAT TODAY
+        __
+        [curr_date_raw]
+        __
+        [start_date_raw]
+    successors:
+      -
+        id: Activity_05gyooz
+        condition: ''
+  Activity_05gyooz:
+    plugin: eca_form_field_set_error
+    label: 'Set validation error'
+    configuration:
+      message: 'ERROR! You cannot create a certificate on a date that has already passed!'
+      field_name: field_certificate_dates
+    successors: {  }
+  Activity_0fo0l7i:
+    plugin: eca_write_log_message
+    label: msg
+    configuration:
+      channel: eca
+      severity: '3'
+      message: 'ERROR VAC > 14'
+    successors:
+      -
+        id: Activity_1ia2hb9
+        condition: ''
+  Activity_1ia2hb9:
+    plugin: eca_form_field_set_error
+    label: 'Set validation error'
+    configuration:
+      message: 'ERROR! Max days that can be in certificate equals 14!'
+      field_name: field_quantity_days
+    successors: {  }
+  Activity_13jhlyr:
+    plugin: eca_form_build_entity
+    label: 'Build node from submitted values'
+    configuration:
+      token_name: certificate
+    successors:
+      -
+        id: Gateway_17twg62
+        condition: ''
+  Activity_0lfhqt1:
+    plugin: eca_form_field_set_error
+    label: 'Set validation error'
+    configuration:
+      message: test
+      field_name: field_certificate_type
+    successors:
+      -
+        id: Activity_03bdi5c
+        condition: ''
+  Activity_1v9mi4e:
+    plugin: eca_set_field_value
+    label: 'Set field_certificate_dates'
+    configuration:
+      field_name: field_certificate_dates.value
+      field_value: '[current-date:html_date]'
+      method: 'set:clear'
+      strip_tags: false
+      trim: false
+      save_entity: false
+      object: node
+    successors: {  }
+  Activity_03bdi5c:
+    plugin: eca_write_log_message
+    label: msg
+    configuration:
+      channel: eca
+      severity: '3'
+      message: |-
+        CCCCCCCCCCCC
+        _
+        [certificate:field_quantity_days:value]
+        _
+        [certificate:field_quantity_days]
+        _
+        [certificate:field_days_left]
+    successors: {  }
+  Activity_18fkm8u:
+    plugin: 'eca_tamper:math'
+    label: 'Calculate days'
+    configuration:
+      operation: division
+      flip: false
+      value: '86400'
+      eca_data: '[days_in_sec]'
+      eca_token_name: full_days
+    successors:
+      -
+        id: Activity_0vfhkp4
+        condition: ''
+  Activity_0vfhkp4:
+    plugin: 'eca_tamper:math'
+    label: 'Calculate days'
+    configuration:
+      operation: addition
+      flip: false
+      value: '1'
+      eca_data: '[full_days]'
+      eca_token_name: full_days
+    successors:
+      -
+        id: Activity_0mz08cy
+        condition: ''
+  Activity_0mz08cy:
+    plugin: eca_write_log_message
+    label: msg
+    configuration:
+      channel: eca
+      severity: '3'
+      message: |-
+        CCCCCCBBBBB 2
+        _
+        [full_days]
+        _
+        [this-user:display-name]
+        _
+        [this-user:uid]
+        _
+        [new_certificate:title]
+        _
+        [node:field_certificate_dates:end_date:raw]
+        _
+        [node:field_certificate_dates:start_date:raw]
+        _
+        [node:field_certificate_type:entity:tid]
+    successors:
+      -
+        id: Activity_1m79s5s
+        condition: ''
+  Activity_180tkz0:
+    plugin: 'eca_tamper:math'
+    label: 'Calculate days'
+    configuration:
+      operation: subtraction
+      flip: false
+      value: '[node:field_certificate_dates:start_date:raw]'
+      eca_data: '[node:field_certificate_dates:end_date:raw]'
+      eca_token_name: days_in_sec
+    successors:
+      -
+        id: Activity_18fkm8u
+        condition: ''
+  Activity_0k0qlgy:
+    plugin: eca_write_log_message
+    label: msg
+    configuration:
+      channel: eca
+      severity: '3'
+      message: |-
+        CCCCCCBBBBB 1
+        _
+        [node:field_user:uid]
+        _
+        [node:field_user:target_id]
+        _
+        [node:field_user:entity:uid]
+        _
+        [new_certificate:title]
+        _
+        [node:field_certificate_dates:end_date:raw]
+        _
+        [node:field_certificate_dates:start_date:raw]
+        _
+        [node:field_certificate_type:entity:tid]
+    successors:
+      -
+        id: Activity_0rm1y2a
+        condition: ''
+  Activity_009dr0x:
+    plugin: eca_write_log_message
+    label: msg
+    configuration:
+      channel: eca
+      severity: '3'
+      message: |-
+        ERROR DATE START MUST BE TODAY!
+        __
+        [curr_date_raw]
+        __
+        [start_date_raw]
+    successors:
+      -
+        id: Activity_0a5e9r8
+        condition: ''
+  Activity_0a5e9r8:
+    plugin: eca_form_field_set_error
+    label: 'Set validation error'
+    configuration:
+      message: 'ERROR! Date start must start from today!'
+      field_name: field_certificate_dates
+    successors: {  }
+  Activity_0tk3lq6:
+    plugin: eca_new_entity
+    label: 'Create new log certificate'
+    configuration:
+      token_name: certificate-log
+      type: 'node certificate_operations'
+      langcode: ''
+      label: 'Providing a bonus certificate #[new_certificate:nid]'
+      published: true
+      owner: '1'
+    successors:
+      -
+        id: Activity_17850gd
+        condition: ''
+  Activity_17850gd:
+    plugin: eca_set_field_value
+    label: 'Set field_action_date'
+    configuration:
+      field_name: field_action_date
+      field_value: '[current-date:custom:Y-m-d\TH:i:s]'
+      method: 'set:clear'
+      strip_tags: false
+      trim: false
+      save_entity: false
+      object: certificate-log
+    successors:
+      -
+        id: Activity_09m911b
+        condition: ''
+  Activity_09m911b:
+    plugin: eca_set_field_value
+    label: 'Set field_certificate'
+    configuration:
+      field_name: field_certificate
+      field_value: '[new_certificate:nid]'
+      method: 'set:clear'
+      strip_tags: false
+      trim: false
+      save_entity: false
+      object: certificate-log
+    successors:
+      -
+        id: Activity_1ad7ab2
+        condition: ''
+  Activity_1ad7ab2:
+    plugin: eca_set_field_value
+    label: 'Set field_certificate_state'
+    configuration:
+      field_name: field_certificate_state
+      field_value: '5'
+      method: 'set:clear'
+      strip_tags: false
+      trim: false
+      save_entity: false
+      object: certificate-log
+    successors:
+      -
+        id: Activity_1q3znk7
+        condition: ''
+  Activity_1q3znk7:
+    plugin: eca_set_field_value
+    label: 'Set field_days_use'
+    configuration:
+      field_name: field_days_use
+      field_value: '[new_certificate:field_quantity_days]'
+      method: 'set:clear'
+      strip_tags: false
+      trim: false
+      save_entity: false
+      object: certificate-log
+    successors:
+      -
+        id: Activity_1akydif
+        condition: ''
+  Activity_1oypzrk:
+    plugin: eca_save_entity
+    label: 'Save log certificate'
+    configuration:
+      object: certificate-log
+    successors:
+      -
+        id: Activity_0608wyd
+        condition: ''
+  Activity_0613utv:
+    plugin: eca_token_load_entity
+    label: 'Load user'
+    configuration:
+      token_name: this-user
+      from: id
+      entity_type: user
+      entity_id: '[this-user:uid]'
+      revision_id: ''
+      properties: ''
+      langcode: _interface
+      latest_revision: false
+      unchanged: false
+      object: ''
+    successors:
+      -
+        id: Activity_0t7tbj0
+        condition: ''
+  Activity_1uqin6f:
+    plugin: eca_get_field_value
+    label: 'Get days balance field'
+    configuration:
+      field_name: field_vacation_balance_days
+      token_name: balance_days
+      object: '[this-user]'
+    successors:
+      -
+        id: Activity_17cu3ir
+        condition: ''
+  Activity_17cu3ir:
+    plugin: 'eca_tamper:math'
+    label: 'Update days balance field'
+    configuration:
+      operation: addition
+      flip: false
+      value: '[new_certificate:field_quantity_days]'
+      eca_data: '[balance_days]'
+      eca_token_name: new_balance_days
+    successors:
+      -
+        id: Activity_0ffbqkf
+        condition: ''
+  Activity_0ffbqkf:
+    plugin: eca_set_field_value
+    label: 'Set new days balance field'
+    configuration:
+      field_name: field_vacation_balance_days
+      field_value: '[new_balance_days]'
+      method: 'set:clear'
+      strip_tags: false
+      trim: false
+      save_entity: true
+      object: '[this-user]'
+    successors:
+      -
+        id: Activity_0h6gpan
+        condition: ''
+  Activity_0608wyd:
+    plugin: eca_write_log_message
+    label: msg
+    configuration:
+      channel: eca
+      severity: '3'
+      message: |-
+        GG BB CC
+        __
+        [new_certificate:field_quantity_days]
+        __
+        [this-user:uid]
+        __
+        [balance_days]
+        __
+        [new_balance_days]
+    successors:
+      -
+        id: Activity_11edkx3
+        condition: ''
+  Activity_1m79s5s:
+    plugin: eca_write_log_message
+    label: log
+    configuration:
+      channel: eca
+      severity: '3'
+      message: |-
+        give BONUS certificate
+        ___
+        [new_certificate:nid]
+        ___
+        [new_certificate:field_quantity_days]
+    successors:
+      -
+        id: Activity_0tk3lq6
+        condition: ''
+  Activity_1r4w73k:
+    plugin: eca_write_log_message
+    label: log
+    configuration:
+      channel: eca
+      severity: '3'
+      message: |-
+        expire BONUS certificate
+        ___
+        [new_certificate:nid]
+        ___
+        [new_certificate:field_quantity_days]
+        __
+        [new_certificate:field_days_left]
+    successors:
+      -
+        id: Activity_0y8nq7b
+        condition: ''
+  Activity_0y8nq7b:
+    plugin: eca_switch_account
+    label: 'Swich user'
+    configuration:
+      user_id: '1'
+    successors:
+      -
+        id: Activity_1qb5px3
+        condition: ''
+  Activity_1pgj19i:
+    plugin: 'entity:unpublish_action:node'
+    label: 'Unpublish certificate'
+    configuration:
+      object: new_certificate
+    successors:
+      -
+        id: Activity_07u6ayj
+        condition: ''
+  Activity_07u6ayj:
+    plugin: eca_new_entity
+    label: 'Create new log certificate'
+    configuration:
+      token_name: certificate-log
+      type: 'node certificate_operations'
+      langcode: ''
+      label: 'Expiration of the bonus certificate #[new_certificate:nid]'
+      published: true
+      owner: '1'
+    successors:
+      -
+        id: Activity_0n873rw
+        condition: ''
+  Activity_0n873rw:
+    plugin: eca_set_field_value
+    label: 'Set field_action_date'
+    configuration:
+      field_name: field_action_date
+      field_value: '[current-date:custom:Y-m-d\TH:i:s]'
+      method: 'set:clear'
+      strip_tags: false
+      trim: false
+      save_entity: false
+      object: certificate-log
+    successors:
+      -
+        id: Activity_0ngg5ol
+        condition: ''
+  Activity_0ngg5ol:
+    plugin: eca_set_field_value
+    label: 'Set field_certificate'
+    configuration:
+      field_name: field_certificate
+      field_value: '[new_certificate:nid]'
+      method: 'set:clear'
+      strip_tags: false
+      trim: false
+      save_entity: false
+      object: certificate-log
+    successors:
+      -
+        id: Activity_1rogb1t
+        condition: ''
+  Activity_1rogb1t:
+    plugin: eca_set_field_value
+    label: 'Set field_certificate_state'
+    configuration:
+      field_name: field_certificate_state
+      field_value: '7'
+      method: 'set:clear'
+      strip_tags: false
+      trim: false
+      save_entity: false
+      object: certificate-log
+    successors:
+      -
+        id: Activity_1jmo5fw
+        condition: ''
+  Activity_0tr2fik:
+    plugin: eca_save_entity
+    label: 'Save log certificate'
+    configuration:
+      object: certificate-log
+    successors:
+      -
+        id: Activity_0iwk1ce
+        condition: ''
+  Activity_035xfl0:
+    plugin: eca_get_field_value
+    label: 'Get days balance field'
+    configuration:
+      field_name: field_vacation_balance_days
+      token_name: balance_days
+      object: '[this-user]'
+    successors:
+      -
+        id: Activity_13xtpev
+        condition: ''
+  Activity_1ktb2cc:
+    plugin: eca_token_load_entity
+    label: 'Load certificate'
+    configuration:
+      token_name: new_certificate
+      from: id
+      entity_type: node
+      entity_id: '[new_certificate:nid]'
+      revision_id: ''
+      properties: ''
+      langcode: _interface
+      latest_revision: false
+      unchanged: false
+      object: ''
+    successors: {  }
+  Activity_13xtpev:
+    plugin: 'eca_tamper:math'
+    label: 'Update days balance field'
+    configuration:
+      operation: subtraction
+      flip: false
+      value: '[new_certificate:field_days_left]'
+      eca_data: '[balance_days]'
+      eca_token_name: new_balance_days
+    successors:
+      -
+        id: Activity_1ogvke5
+        condition: ''
+  Activity_1ogvke5:
+    plugin: eca_set_field_value
+    label: 'Set new days balance field'
+    configuration:
+      field_name: field_vacation_balance_days
+      field_value: '[new_balance_days]'
+      method: 'set:clear'
+      strip_tags: false
+      trim: false
+      save_entity: true
+      object: this-user
+    successors:
+      -
+        id: Activity_10csstb
+        condition: ''
+  Activity_0iwk1ce:
+    plugin: eca_write_log_message
+    label: msg
+    configuration:
+      channel: eca
+      severity: '3'
+      message: |-
+        EE BB CC
+        __
+        [vac-days]
+        __
+        [this-user:uid]
+        __
+        [balance_days]
+        __
+        [new_balance_days]
+    successors: {  }
+  Activity_1jmo5fw:
+    plugin: eca_set_field_value
+    label: 'Set field_days_use'
+    configuration:
+      field_name: field_days_use
+      field_value: '[new_certificate:field_days_left]'
+      method: 'set:clear'
+      strip_tags: false
+      trim: false
+      save_entity: false
+      object: certificate-log
+    successors:
+      -
+        id: Activity_0613utv
+        condition: ''
+  Activity_0tm4npv:
+    plugin: eca_switch_account
+    label: 'Swich user'
+    configuration:
+      user_id: '1'
+    successors:
+      -
+        id: Activity_0x79hpf
+        condition: ''
+  Activity_1qb5px3:
+    plugin: eca_token_load_entity
+    label: 'Load certificate'
+    configuration:
+      token_name: new_certificate
+      from: id
+      entity_type: node
+      entity_id: '[new_certificate:nid]'
+      revision_id: ''
+      properties: ''
+      langcode: _interface
+      latest_revision: false
+      unchanged: false
+      object: ''
+    successors:
+      -
+        id: Activity_1pgj19i
+        condition: ''
+  Activity_0h6gpan:
+    plugin: eca_set_field_value
+    label: 'Set field_user_vacation_balance'
+    configuration:
+      field_name: field_user_vacation_balance
+      field_value: '[new_balance_days]'
+      method: 'set:clear'
+      strip_tags: false
+      trim: false
+      save_entity: false
+      object: certificate-log
+    successors:
+      -
+        id: Activity_1oypzrk
+        condition: ''
+  Activity_10csstb:
+    plugin: eca_set_field_value
+    label: 'Set field_user_vacation_balance'
+    configuration:
+      field_name: field_user_vacation_balance
+      field_value: '[new_balance_days]'
+      method: 'set:clear'
+      strip_tags: false
+      trim: false
+      save_entity: false
+      object: certificate-log
+    successors:
+      -
+        id: Activity_0tr2fik
+        condition: ''
+  Activity_09bgx6n:
+    plugin: eca_write_log_message
+    label: msg
+    configuration:
+      channel: eca
+      severity: '3'
+      message: 'ERROR VAC == 0'
+    successors:
+      -
+        id: Activity_1fqpbg6
+        condition: ''
+  Activity_1fqpbg6:
+    plugin: eca_form_field_set_error
+    label: 'Set validation error'
+    configuration:
+      message: 'ERROR! Min days that can be in certificate equals 1!'
+      field_name: field_certificate_dates
+    successors: {  }
+  Activity_1akydif:
+    plugin: eca_lock_acquire
+    label: Lock
+    configuration:
+      lock_name: '[this-user]'
+      lock_timeout: '20'
+      lock_wait: true
+      token_name: ''
+    successors:
+      -
+        id: Activity_1uqin6f
+        condition: ''
+  Activity_0t7tbj0:
+    plugin: eca_lock_acquire
+    label: Lock
+    configuration:
+      lock_name: '[this-user]'
+      lock_timeout: '20'
+      lock_wait: true
+      token_name: ''
+    successors:
+      -
+        id: Activity_035xfl0
+        condition: ''

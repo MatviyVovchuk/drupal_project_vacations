@@ -1,0 +1,23 @@
+uuid: 493e97c6-7e59-470e-ac6e-a4bfda1c6c9d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_cancellation_of_vacation
+    - node.type.vacation
+  module:
+    - workflow
+id: node.vacation.field_cancellation_of_vacation
+field_name: field_cancellation_of_vacation
+entity_type: node
+bundle: vacation
+label: 'Cancellation of vacation'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: cancel_vacation_in_progress
+default_value_callback: ''
+settings: {  }
+field_type: workflow

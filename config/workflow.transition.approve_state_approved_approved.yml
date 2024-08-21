@@ -1,0 +1,12 @@
+uuid: b8669062-cb29-45cf-85fa-a6bf885ea787
+langcode: en
+status: true
+dependencies:
+  config:
+    - workflow.state.approve_state_approved
+id: approve_state_approved_approved
+label: ''
+module: workflow
+from_sid: approve_state_approved
+to_sid: approve_state_approved
+roles: {  }

@@ -1,0 +1,30 @@
+uuid: b5116e63-ac75-44d6-8c2a-779ade2e305f
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.restricted_html
+  module:
+    - comment
+    - contact
+    - filter
+    - media
+    - search
+    - system
+    - workflow
+_core:
+  default_config_hash: 6WavjUYXIegP9AAg2zXGx54MWIVoomC3SZhNiqe-Dyk
+id: anonymous
+label: 'Anonymous user'
+weight: 0
+is_admin: false
+permissions:
+  - 'access comments'
+  - 'access content'
+  - 'access site-wide contact form'
+  - 'create approve_state workflow_transition'
+  - 'create cancel_vacation workflow_transition'
+  - 'create test workflow_transition'
+  - 'search content'
+  - 'use text format restricted_html'
+  - 'view media'

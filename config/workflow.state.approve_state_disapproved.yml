@@ -1,0 +1,12 @@
+uuid: e9fd1e95-aeb6-498f-b923-fda1f64a7330
+langcode: en
+status: true
+dependencies:
+  config:
+    - workflow.workflow.approve_state
+id: approve_state_disapproved
+label: Disapproved
+module: workflow
+wid: approve_state
+weight: -7
+sysid: 0

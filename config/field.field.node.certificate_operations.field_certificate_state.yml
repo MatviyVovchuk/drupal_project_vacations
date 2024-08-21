@@ -1,0 +1,29 @@
+uuid: 4d0ac7cf-9bc9-4ffc-a742-eb7f0b0ee168
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_certificate_state
+    - node.type.certificate_operations
+    - taxonomy.vocabulary.certificate_state
+id: node.certificate_operations.field_certificate_state
+field_name: field_certificate_state
+entity_type: node
+bundle: certificate_operations
+label: 'Certificate status'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      certificate_state: certificate_state
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

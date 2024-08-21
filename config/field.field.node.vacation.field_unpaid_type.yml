@@ -1,0 +1,29 @@
+uuid: a1bfdace-49b4-48cd-865f-b8f987aaf66c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_unpaid_type
+    - node.type.vacation
+    - taxonomy.vocabulary.unpaid_type
+id: node.vacation.field_unpaid_type
+field_name: field_unpaid_type
+entity_type: node
+bundle: vacation
+label: 'Unpaid type'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      unpaid_type: unpaid_type
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: paid_states
+field_type: entity_reference

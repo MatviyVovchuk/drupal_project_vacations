@@ -1,0 +1,25 @@
+uuid: 675ae5b7-ffdb-4c41-91ec-eb51964014b8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_approver
+    - node.type.vacation
+id: node.vacation.field_approver
+field_name: field_approver
+entity_type: node
+bundle: vacation
+label: 'Users for approval'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: users_for_approval_filter
+      display_name: entity_reference_1
+      arguments: {  }
+field_type: entity_reference

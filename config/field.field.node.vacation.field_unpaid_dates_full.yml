@@ -1,0 +1,21 @@
+uuid: 098fac49-c177-4033-8416-832acbe7cd9d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_unpaid_dates_full
+    - node.type.vacation
+  module:
+    - datetime_range
+id: node.vacation.field_unpaid_dates_full
+field_name: field_unpaid_dates_full
+entity_type: node
+bundle: vacation
+label: 'Range of unpaid days'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: daterange

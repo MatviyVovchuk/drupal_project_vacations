@@ -1,0 +1,12 @@
+uuid: 2c28c220-2b14-4d7e-ad21-c867c6f6a9c2
+langcode: en
+status: true
+dependencies:
+  config:
+    - workflow.workflow.cancel_vacation
+id: cancel_vacation_cancel
+label: Canceled
+module: workflow
+wid: cancel_vacation
+weight: -8
+sysid: 0

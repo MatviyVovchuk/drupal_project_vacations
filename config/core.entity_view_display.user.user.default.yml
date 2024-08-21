@@ -1,0 +1,90 @@
+uuid: 32521092-83aa-4150-b111-019ff7ded072
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.user.user.field_hire
+    - field.field.user.user.field_month_count
+    - field.field.user.user.field_vacation_balance_days
+    - field.field.user.user.field_vacations_in_the_year
+    - field.field.user.user.user_picture
+    - image.style.thumbnail
+  module:
+    - datetime
+    - image
+    - user
+_core:
+  default_config_hash: mZLyuWM9CQx2ZJVqFGSbzgFnHzudVbHBYmdU256A5Wk
+id: user.user.default
+targetEntityType: user
+bundle: user
+mode: default
+content:
+  field_hire:
+    type: datetime_default
+    label: inline
+    settings:
+      timezone_override: UTC
+      format_type: html_date
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_month_count:
+    type: number_integer
+    label: inline
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_vacation_balance_days:
+    type: number_integer
+    label: inline
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_vacations_in_the_year:
+    type: number_integer
+    label: inline
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  masquerade:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  member_for:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  roles:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  user_picture:
+    type: image
+    label: hidden
+    settings:
+      image_link: content
+      image_style: thumbnail
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  user_roles_entity_view_1:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

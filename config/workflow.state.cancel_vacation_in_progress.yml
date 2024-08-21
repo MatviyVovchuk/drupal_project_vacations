@@ -1,0 +1,12 @@
+uuid: b32cb1bd-3959-48ea-a4ed-a519e30a834b
+langcode: en
+status: true
+dependencies:
+  config:
+    - workflow.workflow.cancel_vacation
+id: cancel_vacation_in_progress
+label: 'In Progress'
+module: workflow
+wid: cancel_vacation
+weight: -9
+sysid: 0

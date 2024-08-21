@@ -1,0 +1,21 @@
+uuid: 83f20d54-6db0-40cb-bdc3-78ee3b63fa79
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_paid_dates
+    - node.type.vacation
+  module:
+    - datetime_range
+id: node.vacation.field_paid_dates
+field_name: field_paid_dates
+entity_type: node
+bundle: vacation
+label: 'Range of paid days'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: daterange

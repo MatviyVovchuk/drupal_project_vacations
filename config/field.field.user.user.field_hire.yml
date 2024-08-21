@@ -1,0 +1,24 @@
+uuid: bc891fa9-3610-4de0-8a07-1dbe1d06fd95
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_hire
+  module:
+    - datetime
+    - user
+id: user.user.field_hire
+field_name: field_hire
+entity_type: user
+bundle: user
+label: 'Hire Date'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    default_date_type: now
+    default_date: now
+default_value_callback: ''
+settings: {  }
+field_type: datetime

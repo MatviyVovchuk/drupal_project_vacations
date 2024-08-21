@@ -1,0 +1,14 @@
+uuid: 8d13ed42-f1bb-46ec-b893-17166e125091
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.teamlead
+  module:
+    - user
+id: user_add_role_action.teamlead
+label: 'Add the Teamlead role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: teamlead

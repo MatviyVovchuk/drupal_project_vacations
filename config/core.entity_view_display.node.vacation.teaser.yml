@@ -1,0 +1,56 @@
+uuid: 8238811d-06f1-4f8d-82e4-6ed0fdddb10d
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.vacation.body
+    - field.field.node.vacation.field_approve_states
+    - field.field.node.vacation.field_approved_by_users
+    - field.field.node.vacation.field_approver
+    - field.field.node.vacation.field_cancellation_of_vacation
+    - field.field.node.vacation.field_certificates_used
+    - field.field.node.vacation.field_days_used_in_the_certifica
+    - field.field.node.vacation.field_paid_dates
+    - field.field.node.vacation.field_paid_state
+    - field.field.node.vacation.field_total_days
+    - field.field.node.vacation.field_unpaid_dates
+    - field.field.node.vacation.field_unpaid_dates_full
+    - field.field.node.vacation.field_unpaid_type
+    - field.field.node.vacation.field_was_the_vacation_canceled
+    - node.type.vacation
+  module:
+    - text
+    - user
+id: node.vacation.teaser
+targetEntityType: node
+bundle: vacation
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_approve_states: true
+  field_approved_by_users: true
+  field_approver: true
+  field_cancellation_of_vacation: true
+  field_certificates_used: true
+  field_days_used_in_the_certifica: true
+  field_paid_dates: true
+  field_paid_state: true
+  field_total_days: true
+  field_unpaid_dates: true
+  field_unpaid_dates_full: true
+  field_unpaid_type: true
+  field_was_the_vacation_canceled: true

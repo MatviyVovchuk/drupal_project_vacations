@@ -1,0 +1,69 @@
+uuid: 776134d9-395b-4c51-a275-5132642d730e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.certificate.field_certificate_dates
+    - field.field.node.certificate.field_certificate_type
+    - field.field.node.certificate.field_days_left
+    - field.field.node.certificate.field_quantity_days
+    - field.field.node.certificate.field_user
+    - node.type.certificate
+  module:
+    - datetime_range
+    - user
+id: node.certificate.default
+targetEntityType: node
+bundle: certificate
+mode: default
+content:
+  field_certificate_dates:
+    type: daterange_default
+    label: inline
+    settings:
+      timezone_override: UTC
+      format_type: html_date
+      separator: '-'
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_certificate_type:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_days_left:
+    type: number_integer
+    label: inline
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_quantity_days:
+    type: number_integer
+    label: inline
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_user:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+hidden: {  }

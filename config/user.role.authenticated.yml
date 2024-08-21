@@ -1,0 +1,54 @@
+uuid: 30846520-49ce-4733-9d57-1b918b5c0092
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.basic_html
+    - filter.format.webform_default
+  module:
+    - comment
+    - contact
+    - field_permissions
+    - filter
+    - media
+    - search
+    - shortcut
+    - system
+    - workflow
+_core:
+  default_config_hash: I44QAB4es39lNzMQWiJLq2dfjX7VRSOzT_5KzAcUq_M
+id: authenticated
+label: 'Authenticated user'
+weight: 1
+is_admin: false
+permissions:
+  - 'access cancel_vacation workflow_transition form'
+  - 'access comments'
+  - 'access content'
+  - 'access shortcuts'
+  - 'access site-wide contact form'
+  - 'bypass cancel_vacation workflow_transition access'
+  - 'create approve_state workflow_transition'
+  - 'create cancel_vacation workflow_transition'
+  - 'create test workflow_transition'
+  - 'edit own field_cancellation_of_vacation'
+  - 'post comments'
+  - 'search content'
+  - 'skip comment approval'
+  - 'use text format basic_html'
+  - 'use text format webform_default'
+  - 'view field_approve_states'
+  - 'view field_approved_by_users'
+  - 'view field_certificate_type'
+  - 'view field_days_left'
+  - 'view field_vacation_balance_days'
+  - 'view field_vacations_in_the_year_'
+  - 'view media'
+  - 'view own field_approve_states'
+  - 'view own field_approved_by_users'
+  - 'view own field_cancellation_of_vacation'
+  - 'view own field_certificate_type'
+  - 'view own field_days_left'
+  - 'view own field_position'
+  - 'view own field_vacation_balance_days'
+  - 'view own field_vacations_in_the_year_'

@@ -1,0 +1,25 @@
+uuid: d5484032-6654-41ad-9c01-b5c15af98919
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_days_left
+    - node.type.certificate
+id: node.certificate.field_days_left
+field_name: field_days_left
+entity_type: node
+bundle: certificate
+label: 'Number of days left in the certificate'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

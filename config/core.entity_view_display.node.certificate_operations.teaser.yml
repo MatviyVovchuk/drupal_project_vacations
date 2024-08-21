@@ -1,0 +1,30 @@
+uuid: c614c767-2554-4aa6-96bb-0cd912005064
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.certificate_operations.field_action_date
+    - field.field.node.certificate_operations.field_certificate
+    - field.field.node.certificate_operations.field_certificate_state
+    - field.field.node.certificate_operations.field_days_use
+    - field.field.node.certificate_operations.field_user_vacation_balance
+    - node.type.certificate_operations
+  module:
+    - user
+id: node.certificate_operations.teaser
+targetEntityType: node
+bundle: certificate_operations
+mode: teaser
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_action_date: true
+  field_certificate: true
+  field_certificate_state: true
+  field_days_use: true
+  field_user_vacation_balance: true

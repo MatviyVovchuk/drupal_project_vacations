@@ -1,0 +1,12 @@
+uuid: 1de62467-4bb9-4355-87e1-864ffe0bbc33
+langcode: en
+status: true
+dependencies:
+  config:
+    - workflow.workflow.approve_state
+id: approve_state_creation
+label: Creation
+module: workflow
+wid: approve_state
+weight: -11
+sysid: 1

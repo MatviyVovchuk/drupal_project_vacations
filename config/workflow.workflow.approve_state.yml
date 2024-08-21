@@ -1,0 +1,16 @@
+uuid: ecbc2a4b-f889-4992-a309-3625e32cadfa
+langcode: en
+status: true
+dependencies: {  }
+id: approve_state
+label: 'Approve State'
+module: workflow
+options:
+  name_as_title: 0
+  fieldset: 0
+  options: buttons
+  schedule_enable: false
+  schedule_timezone: 1
+  always_update_entity: 0
+  comment_log_node: 0
+  watchdog_log: 1

@@ -1,0 +1,29 @@
+uuid: 49bbc432-8994-4984-bd72-1f617d178b67
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_approved_by_users
+    - node.type.vacation
+id: node.vacation.field_approved_by_users
+field_name: field_approved_by_users
+entity_type: node
+bundle: vacation
+label: 'Approved by users'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    target_bundles: null
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    filter:
+      type: _none
+    include_anonymous: false
+field_type: entity_reference

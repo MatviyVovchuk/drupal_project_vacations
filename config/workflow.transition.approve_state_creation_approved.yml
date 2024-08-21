@@ -1,0 +1,23 @@
+uuid: aec187e8-9752-4c4a-89eb-b655a4de27b3
+langcode: en
+status: true
+dependencies:
+  config:
+    - workflow.state.approve_state_approved
+    - workflow.state.approve_state_creation
+id: approve_state_creation_approved
+label: Approved
+module: workflow
+from_sid: approve_state_creation
+to_sid: approve_state_approved
+roles:
+  workflow_author: workflow_author
+  administrator: administrator
+  anonymous: '0'
+  authenticated: '0'
+  content_editor: '0'
+  teamlead: '0'
+  developer: '0'
+  middle_developer: '0'
+  senior_developer: '0'
+  pm: '0'

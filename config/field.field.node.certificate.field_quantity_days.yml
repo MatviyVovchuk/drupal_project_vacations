@@ -1,0 +1,25 @@
+uuid: ab1018e6-267f-470e-b9f3-55cb60f169c4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_quantity_days
+    - node.type.certificate
+id: node.certificate.field_quantity_days
+field_name: field_quantity_days
+entity_type: node
+bundle: certificate
+label: 'Number of days in the certificate'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

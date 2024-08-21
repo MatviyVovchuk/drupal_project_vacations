@@ -1,0 +1,23 @@
+uuid: 949811da-7f89-4377-972c-c8a4fc305369
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_was_the_vacation_canceled
+    - node.type.vacation
+id: node.vacation.field_was_the_vacation_canceled
+field_name: field_was_the_vacation_canceled
+entity_type: node
+bundle: vacation
+label: 'Was the vacation canceled'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

@@ -1,0 +1,24 @@
+uuid: 18993edb-1841-4eac-8671-d152c313f096
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.date.field_date
+    - paragraphs.paragraphs_type.date
+  module:
+    - webform
+id: paragraph.date.default
+targetEntityType: paragraph
+bundle: date
+mode: default
+content:
+  field_date:
+    type: webform_entity_reference_entity_view
+    label: above
+    settings:
+      source_entity: true
+      lazy: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

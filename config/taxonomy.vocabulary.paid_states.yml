@@ -1,0 +1,8 @@
+uuid: f8dafa79-6240-4c8d-a822-035e1efc7917
+langcode: en
+status: true
+dependencies: {  }
+name: 'Paid States'
+vid: paid_states
+description: ''
+weight: 0

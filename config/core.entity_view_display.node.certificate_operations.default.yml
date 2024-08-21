@@ -1,0 +1,68 @@
+uuid: 134a65da-7772-4dcc-b94c-e875a55853e5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.certificate_operations.field_action_date
+    - field.field.node.certificate_operations.field_certificate
+    - field.field.node.certificate_operations.field_certificate_state
+    - field.field.node.certificate_operations.field_days_use
+    - field.field.node.certificate_operations.field_user_vacation_balance
+    - node.type.certificate_operations
+  module:
+    - datetime
+    - user
+id: node.certificate_operations.default
+targetEntityType: node
+bundle: certificate_operations
+mode: default
+content:
+  field_action_date:
+    type: datetime_default
+    label: inline
+    settings:
+      timezone_override: UTC
+      format_type: short
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_certificate:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_certificate_state:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_days_use:
+    type: number_integer
+    label: inline
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  field_user_vacation_balance:
+    type: number_integer
+    label: inline
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 106
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

@@ -1,0 +1,18 @@
+uuid: daf4e5b5-5487-4e06-b2ba-d7003c45e23e
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'Certificate Operations'
+type: certificate_operations
+description: ''
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false

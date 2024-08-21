@@ -1,0 +1,16 @@
+uuid: 7f4cd9b4-2085-4d8b-b376-7b23b28f6c0e
+langcode: en
+status: true
+dependencies: {  }
+id: cancel_vacation
+label: 'Cancel Vacation'
+module: workflow
+options:
+  name_as_title: 0
+  fieldset: 0
+  options: buttons
+  schedule_enable: false
+  schedule_timezone: 1
+  always_update_entity: 0
+  comment_log_node: 0
+  watchdog_log: 1

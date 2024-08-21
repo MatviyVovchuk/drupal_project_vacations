@@ -1,0 +1,14 @@
+_core:
+  default_config_hash: VDJxTZtQR21qB4lvOq8zszJZLvLKrSPQpdn2E3T71Ww
+langcode: en
+uuid: c19f56b3-1975-4e97-91c2-dc97203aff88
+name: Vacations
+mail: doc25900@gmail.com
+slogan: 'Take your vacation!'
+page:
+  403: /user/login
+  404: /active_and_future_vacations
+  front: /active_and_future_vacations
+admin_compact_mode: false
+weight_select_max: 100
+default_langcode: en

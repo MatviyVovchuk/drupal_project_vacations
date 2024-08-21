@@ -1,0 +1,205 @@
+approve_state_on_approve:
+  workflow_author:
+    grant_view: true
+    grant_update: 0
+    grant_delete: 0
+  administrator:
+    grant_view: true
+    grant_update: true
+    grant_delete: true
+  teamlead:
+    grant_view: true
+    grant_update: true
+    grant_delete: 0
+  pm:
+    grant_view: true
+    grant_update: true
+    grant_delete: 0
+  anonymous:
+    grant_view: 0
+    grant_update: 0
+    grant_delete: 0
+  authenticated:
+    grant_view: 0
+    grant_update: 0
+    grant_delete: 0
+  content_editor:
+    grant_view: 0
+    grant_update: 0
+    grant_delete: 0
+  developer:
+    grant_view: 0
+    grant_update: 0
+    grant_delete: 0
+  middle_developer:
+    grant_view: 0
+    grant_update: 0
+    grant_delete: 0
+  senior_developer:
+    grant_view: 0
+    grant_update: 0
+    grant_delete: 0
+approve_state_approved:
+  workflow_author:
+    grant_view: true
+    grant_update: 0
+    grant_delete: 0
+  administrator:
+    grant_view: true
+    grant_update: true
+    grant_delete: true
+  teamlead:
+    grant_view: true
+    grant_update: true
+    grant_delete: 0
+  pm:
+    grant_view: true
+    grant_update: true
+    grant_delete: 0
+  anonymous:
+    grant_view: 0
+    grant_update: 0
+    grant_delete: 0
+  authenticated:
+    grant_view: 0
+    grant_update: 0
+    grant_delete: 0
+  content_editor:
+    grant_view: true
+    grant_update: 0
+    grant_delete: 0
+  developer:
+    grant_view: true
+    grant_update: 0
+    grant_delete: 0
+  middle_developer:
+    grant_view: true
+    grant_update: 0
+    grant_delete: 0
+  senior_developer:
+    grant_view: true
+    grant_update: 0
+    grant_delete: 0
+approve_state_disapproved:
+  workflow_author:
+    grant_view: true
+    grant_update: 0
+    grant_delete: 0
+  administrator:
+    grant_view: true
+    grant_update: true
+    grant_delete: true
+  teamlead:
+    grant_view: true
+    grant_update: true
+    grant_delete: 0
+  pm:
+    grant_view: true
+    grant_update: true
+    grant_delete: 0
+  anonymous:
+    grant_view: 0
+    grant_update: 0
+    grant_delete: 0
+  authenticated:
+    grant_view: 0
+    grant_update: 0
+    grant_delete: 0
+  content_editor:
+    grant_view: 0
+    grant_update: 0
+    grant_delete: 0
+  developer:
+    grant_view: 0
+    grant_update: 0
+    grant_delete: 0
+  middle_developer:
+    grant_view: 0
+    grant_update: 0
+    grant_delete: 0
+  senior_developer:
+    grant_view: 0
+    grant_update: 0
+    grant_delete: 0
+cancel_vacation_in_progress:
+  workflow_author:
+    grant_view: true
+    grant_update: 0
+    grant_delete: 0
+  content_editor:
+    grant_view: true
+    grant_update: 0
+    grant_delete: 0
+  administrator:
+    grant_view: true
+    grant_update: true
+    grant_delete: true
+  teamlead:
+    grant_view: true
+    grant_update: 0
+    grant_delete: 0
+  developer:
+    grant_view: true
+    grant_update: 0
+    grant_delete: 0
+  middle_developer:
+    grant_view: true
+    grant_update: 0
+    grant_delete: 0
+  senior_developer:
+    grant_view: true
+    grant_update: 0
+    grant_delete: 0
+  pm:
+    grant_view: true
+    grant_update: 0
+    grant_delete: 0
+  anonymous:
+    grant_view: 0
+    grant_update: 0
+    grant_delete: 0
+  authenticated:
+    grant_view: 0
+    grant_update: 0
+    grant_delete: 0
+cancel_vacation_cancel:
+  workflow_author:
+    grant_view: true
+    grant_update: 0
+    grant_delete: 0
+  content_editor:
+    grant_view: 0
+    grant_update: 0
+    grant_delete: 0
+  administrator:
+    grant_view: true
+    grant_update: true
+    grant_delete: true
+  teamlead:
+    grant_view: true
+    grant_update: 0
+    grant_delete: 0
+  developer:
+    grant_view: 0
+    grant_update: 0
+    grant_delete: 0
+  middle_developer:
+    grant_view: 0
+    grant_update: 0
+    grant_delete: 0
+  senior_developer:
+    grant_view: 0
+    grant_update: 0
+    grant_delete: 0
+  pm:
+    grant_view: true
+    grant_update: 0
+    grant_delete: 0
+  anonymous:
+    grant_view: 0
+    grant_update: 0
+    grant_delete: 0
+  authenticated:
+    grant_view: 0
+    grant_update: 0
+    grant_delete: 0

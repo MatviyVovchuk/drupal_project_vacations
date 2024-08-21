@@ -1,0 +1,23 @@
+uuid: 082b9e3b-a695-43ba-bd06-7083fc723bc5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_approve_states
+    - node.type.vacation
+  module:
+    - workflow
+id: node.vacation.field_approve_states
+field_name: field_approve_states
+entity_type: node
+bundle: vacation
+label: 'Approval status'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: approve_state_on_approve
+default_value_callback: ''
+settings: {  }
+field_type: workflow

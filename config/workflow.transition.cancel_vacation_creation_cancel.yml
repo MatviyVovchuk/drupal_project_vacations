@@ -1,0 +1,23 @@
+uuid: 9c1a40ce-92e7-4519-aa14-d5bd7f2a3b4a
+langcode: en
+status: true
+dependencies:
+  config:
+    - workflow.state.cancel_vacation_cancel
+    - workflow.state.cancel_vacation_creation
+id: cancel_vacation_creation_cancel
+label: Cancel
+module: workflow
+from_sid: cancel_vacation_creation
+to_sid: cancel_vacation_cancel
+roles:
+  administrator: administrator
+  workflow_author: '0'
+  anonymous: '0'
+  authenticated: '0'
+  content_editor: '0'
+  teamlead: '0'
+  developer: '0'
+  middle_developer: '0'
+  senior_developer: '0'
+  pm: '0'

@@ -1,0 +1,12 @@
+uuid: 1654608f-5e3d-4c43-a89f-a764fe12baba
+langcode: en
+status: true
+dependencies:
+  config:
+    - workflow.workflow.cancel_vacation
+id: cancel_vacation_creation
+label: Creation
+module: workflow
+wid: cancel_vacation
+weight: -11
+sysid: 1

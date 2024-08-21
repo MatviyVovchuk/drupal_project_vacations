@@ -1,0 +1,29 @@
+uuid: d653e73f-081f-4998-8b6c-3131a6f48613
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_paid_state
+    - node.type.vacation
+    - taxonomy.vocabulary.paid_states
+id: node.vacation.field_paid_state
+field_name: field_paid_state
+entity_type: node
+bundle: vacation
+label: 'Vacation type'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      paid_states: paid_states
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

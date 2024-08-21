@@ -1,0 +1,8 @@
+uuid: 84c5aece-1c7e-4bd5-918c-c7d6d34207a2
+langcode: en
+status: true
+dependencies: {  }
+name: 'Certificate Type'
+vid: certificate_type
+description: ''
+weight: 0

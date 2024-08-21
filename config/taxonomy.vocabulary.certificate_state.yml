@@ -1,0 +1,8 @@
+uuid: 7929d5e4-87f7-4634-835e-f561ff8cf865
+langcode: en
+status: true
+dependencies: {  }
+name: 'Certificate State'
+vid: certificate_state
+description: ''
+weight: 0

@@ -1,0 +1,40 @@
+uuid: 62e55900-1fbb-469b-9a50-b6edba648214
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.certificate
+    - node.type.vacation
+  module:
+    - comment
+    - contextual
+    - field_permissions
+    - node
+    - toolbar
+    - tour
+    - view_unpublished
+    - workflow
+id: teamlead
+label: Teamlead
+weight: 4
+is_admin: null
+permissions:
+  - 'access any approve_state workflow_transion overview'
+  - 'access approve_state workflow_transition form'
+  - 'access contextual links'
+  - 'access own approve_state workflow_transion overview'
+  - 'access toolbar'
+  - 'access tour'
+  - 'administer comments'
+  - 'bypass approve_state workflow_transition access'
+  - 'create approve_state workflow_transition'
+  - 'create cancel_vacation workflow_transition'
+  - 'create certificate content'
+  - 'create test workflow_transition'
+  - 'create vacation content'
+  - 'edit field_approve_states'
+  - 'edit own comments'
+  - 'view any unpublished certificate content'
+  - 'view field_approve_states'
+  - 'view own field_approve_states'
+  - 'view own unpublished content'

@@ -1,0 +1,23 @@
+uuid: a9a3db64-8cf2-4597-b3df-61b7a726e6ff
+langcode: en
+status: true
+dependencies:
+  config:
+    - workflow.state.cancel_vacation_creation
+    - workflow.state.cancel_vacation_in_progress
+id: cancel_vacation_creation_in_progress
+label: ''
+module: workflow
+from_sid: cancel_vacation_creation
+to_sid: cancel_vacation_in_progress
+roles:
+  workflow_author: workflow_author
+  administrator: administrator
+  anonymous: '0'
+  authenticated: '0'
+  content_editor: '0'
+  teamlead: '0'
+  developer: '0'
+  middle_developer: '0'
+  senior_developer: '0'
+  pm: '0'

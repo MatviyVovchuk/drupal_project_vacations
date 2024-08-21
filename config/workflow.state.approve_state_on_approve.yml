@@ -1,0 +1,12 @@
+uuid: bee51b26-8be0-4fe6-87a4-48d0d15fe3c9
+langcode: en
+status: true
+dependencies:
+  config:
+    - workflow.workflow.approve_state
+id: approve_state_on_approve
+label: 'In Progress'
+module: workflow
+wid: approve_state
+weight: -9
+sysid: 0

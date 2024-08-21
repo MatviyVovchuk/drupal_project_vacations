@@ -1,0 +1,33 @@
+uuid: 46acd07b-654a-4d10-b29e-79e4ace7fad0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_certificate_type
+    - node.type.certificate
+    - taxonomy.vocabulary.certificate_type
+  content:
+    - 'taxonomy_term:certificate_type:5dd32568-7cc6-4d50-91e1-19908a5804c4'
+id: node.certificate.field_certificate_type
+field_name: field_certificate_type
+entity_type: node
+bundle: certificate
+label: 'Certificate type'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    target_uuid: 5dd32568-7cc6-4d50-91e1-19908a5804c4
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      certificate_type: certificate_type
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

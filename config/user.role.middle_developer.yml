@@ -1,0 +1,34 @@
+uuid: b17eaeae-7bcf-4637-8877-df7e343be8c2
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.certificate
+    - node.type.vacation
+  module:
+    - comment
+    - contextual
+    - field_permissions
+    - node
+    - toolbar
+    - tour
+    - view_unpublished
+    - workflow
+id: middle_developer
+label: 'Middle Developer'
+weight: 6
+is_admin: null
+permissions:
+  - 'access contextual links'
+  - 'access toolbar'
+  - 'access tour'
+  - 'administer comments'
+  - 'create approve_state workflow_transition'
+  - 'create cancel_vacation workflow_transition'
+  - 'create test workflow_transition'
+  - 'create vacation content'
+  - 'edit own comments'
+  - 'view any unpublished certificate content'
+  - 'view field_approve_states'
+  - 'view own field_approve_states'
+  - 'view own unpublished content'

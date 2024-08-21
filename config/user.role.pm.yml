@@ -1,0 +1,39 @@
+uuid: 6181b9d4-0e3d-451a-be31-412623bdddac
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.certificate
+    - node.type.vacation
+  module:
+    - comment
+    - contextual
+    - field_permissions
+    - node
+    - toolbar
+    - tour
+    - view_unpublished
+    - workflow
+id: pm
+label: PM
+weight: 8
+is_admin: null
+permissions:
+  - 'access any approve_state workflow_transion overview'
+  - 'access approve_state workflow_transition form'
+  - 'access contextual links'
+  - 'access own approve_state workflow_transion overview'
+  - 'access toolbar'
+  - 'access tour'
+  - 'administer comments'
+  - 'bypass approve_state workflow_transition access'
+  - 'create approve_state workflow_transition'
+  - 'create cancel_vacation workflow_transition'
+  - 'create test workflow_transition'
+  - 'create vacation content'
+  - 'edit field_approve_states'
+  - 'edit own comments'
+  - 'view any unpublished certificate content'
+  - 'view field_approve_states'
+  - 'view own field_approve_states'
+  - 'view own unpublished content'

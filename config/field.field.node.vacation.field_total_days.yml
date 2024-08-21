@@ -1,0 +1,25 @@
+uuid: 83e70967-7198-4e8b-8eea-d81a3a450eff
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_total_days
+    - node.type.vacation
+id: node.vacation.field_total_days
+field_name: field_total_days
+entity_type: node
+bundle: vacation
+label: 'Total days'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

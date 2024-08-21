@@ -1,0 +1,26 @@
+uuid: 9aafb236-7ec3-4522-af57-83abf1fcb56c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_vacations_in_the_year
+  module:
+    - user
+id: user.user.field_vacations_in_the_year
+field_name: field_vacations_in_the_year
+entity_type: user
+bundle: user
+label: 'Number of vacations taken during the year'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

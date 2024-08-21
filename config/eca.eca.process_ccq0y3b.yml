@@ -1,0 +1,3094 @@
+uuid: a2fa722c-adf1-4ab7-894c-7c2e090fa48c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.vacation.field_paid_dates
+    - field.field.node.vacation.field_paid_state
+    - field.field.node.vacation.field_unpaid_type
+    - field.storage.node.field_paid_dates
+    - field.storage.node.field_paid_state
+    - field.storage.node.field_unpaid_type
+    - views.view.find_vacations_between_dates
+    - views.view.my_vacation_requests
+  module:
+    - eca_base
+    - eca_content
+    - eca_endpoint
+    - eca_form
+    - eca_log
+    - eca_tamper
+    - eca_user
+    - eca_views
+id: process_ccq0y3b
+modeller: bpmn_io
+label: 'Validate vacation'
+version: ''
+weight: -10
+events:
+  Event_0utoxoe:
+    plugin: 'form:form_validate'
+    label: 'Validate Form'
+    configuration:
+      form_id: node-vacation-form
+      entity_type_id: ''
+      bundle: ''
+      operation: ''
+    successors:
+      -
+        id: Activity_1fq8yyk
+        condition: ''
+conditions:
+  Flow_1p9ckbb:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[vacation:field_paid_state:entity:tid]'
+      right: '3'
+      operator: equal
+      type: value
+  Flow_1ke5rf4:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[full_days]'
+      right: '14'
+      operator: greaterthan
+      type: value
+  Flow_0d3o7il:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[vacation:field_paid_dates:value]'
+      right: '[current-date:custom:Y-m-d]'
+      operator: equal
+      type: value
+  Flow_0f5w38q:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '7'
+      right: '[full_days]'
+      operator: greaterthan
+      type: value
+  Flow_1ijufe0:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[vacation:field_paid_dates:start_date:custom:D]'
+      right: Sat
+      operator: equal
+      type: value
+  Flow_1fe34zl:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[vacation:field_paid_dates:end_date:custom:D]'
+      right: Sat
+      operator: equal
+      type: value
+  Flow_0bcxibs:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[vacation:field_paid_dates:start_date:custom:D]'
+      right: Sun
+      operator: equal
+      type: value
+  Flow_1v68qrz:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[vacation:field_paid_dates:end_date:custom:D]'
+      right: Sun
+      operator: equal
+      type: value
+  Flow_1790nst:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[curr_date_raw]'
+      right: '[start_date_raw]'
+      operator: greaterthan
+      type: value
+  Flow_0low68x:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[vacation:field_unpaid_type:entity:tid]'
+      right: '23'
+      operator: equal
+      type: value
+  Flow_0q3mnzp:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[vacation:field_unpaid_dates_full:value]'
+      right: '[current-date:custom:Y-m-d]'
+      operator: equal
+      type: value
+  Flow_0dykly4:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[vacation:field_unpaid_dates_full:start_date:custom:D]'
+      right: Sat
+      operator: equal
+      type: value
+  Flow_1fcqb6z:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[vacation:field_unpaid_dates_full:start_date:custom:D]'
+      right: Sun
+      operator: equal
+      type: value
+  Flow_13snthr:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[vacation:field_unpaid_dates_full:end_date:custom:D]'
+      right: Sat
+      operator: equal
+      type: value
+  Flow_1prknvk:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[vacation:field_unpaid_dates_full:end_date:custom:D]'
+      right: Sun
+      operator: equal
+      type: value
+  Flow_1kwjnmt:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[vacation:field_unpaid_type:entity:tid]'
+      right: '24'
+      operator: equal
+      type: value
+  Flow_1lmqysv:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[vacation:field_unpaid_dates:start_date:custom:G]'
+      right: '9'
+      operator: lessthan
+      type: value
+  Flow_0a7wdyd:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[vacation:field_unpaid_dates:end_date:raw]'
+      right: '[new_result_end_time]'
+      operator: greaterthan
+      type: value
+  Flow_1og5i5q:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[vacation:field_unpaid_dates:start_date:custom:D]'
+      right: Sat
+      operator: equal
+      type: value
+  Flow_1dviuxp:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[vacation:field_unpaid_dates:start_date:custom:D]'
+      right: Sun
+      operator: equal
+      type: value
+  Flow_0qi4ura:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[vacation:field_unpaid_dates:end_date:custom:D]'
+      right: Sat
+      operator: equal
+      type: value
+  Flow_0kpqzxg:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[vacation:field_unpaid_dates:end_date:custom:D]'
+      right: Sun
+      operator: equal
+      type: value
+  Flow_0eq5rh2:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[result_start_time]'
+      right: '[result_end_time]'
+      operator: equal
+      type: value
+  Flow_0t456ti:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[curr_date_raw]'
+      right: '[start_date_raw]'
+      operator: greaterthan
+      type: value
+  Flow_10jyhyf:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[current-date:raw]'
+      right: '[vacation:field_unpaid_dates:start_date:raw]'
+      operator: equal
+      type: value
+  Flow_1nut33a:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[full_days]'
+      right: '[vacation:author:field_vacation_balance_days]'
+      operator: greaterthan
+      type: value
+  Flow_0st471i:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[vacation:field_paid_dates:end_date:custom:D]'
+      right: Fri
+      operator: equal
+      type: value
+  Flow_0tzod2s:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[vacation:field_paid_dates:start_date:custom:D]'
+      right: Mon
+      operator: equal
+      type: value
+  Flow_1lfi0vn:
+    plugin: eca_count
+    configuration:
+      negate: false
+      case: false
+      left: vacation_list_paid
+      right: '0'
+      operator: greaterthan
+      type: numeric
+  Flow_0nailju:
+    plugin: eca_count
+    configuration:
+      negate: false
+      case: false
+      left: vacation_list_paid
+      right: '0'
+      operator: greaterthan
+      type: numeric
+  Flow_1pvcm14:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[vacation:field_paid_state:entity:tid]'
+      right: '4'
+      operator: equal
+      type: value
+  Flow_05khwpp:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[vacation:field_unpaid_dates_full:end_date:custom:D]'
+      right: Fri
+      operator: equal
+      type: value
+  Flow_1qms5p1:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[vacation:field_unpaid_dates:end_date:custom:D]'
+      right: Fri
+      operator: equal
+      type: value
+  Flow_1te7ogn:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[vacation:field_unpaid_type:entity:tid]'
+      right: '23'
+      operator: equal
+      type: value
+  Flow_1ugopr5:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[vacation:field_unpaid_type:entity:tid]'
+      right: '24'
+      operator: equal
+      type: value
+  Flow_1prdenf:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[vacation:field_paid_state:entity:tid]'
+      right: '3'
+      operator: equal
+      type: value
+  Flow_0bl0gwn:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[vacation:field_unpaid_dates:start_date:custom:D]'
+      right: Mon
+      operator: equal
+      type: value
+  Flow_0r3oxe9:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[vacation:field_unpaid_dates_full:start_date:custom:D]'
+      right: Mon
+      operator: equal
+      type: value
+  Flow_0k08c89:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[user_vacation_item:field_paid_state:entity:tid]'
+      right: '4'
+      operator: equal
+      type: value
+  Flow_1afosco:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[user_vacation_item:field_unpaid_type:entity:tid]'
+      right: '24'
+      operator: equal
+      type: value
+  Flow_1rcvmht:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[user_vacation_item:field_paid_state:entity:tid]'
+      right: '3'
+      operator: equal
+      type: value
+  Flow_11gf4wm:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[user_vacation_item:field_unpaid_type:entity:tid]'
+      right: '23'
+      operator: equal
+      type: value
+  Flow_17s09v3:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[vacation:field_paid_state:entity:tid]'
+      right: '4'
+      operator: equal
+      type: value
+  Flow_1md4qv6:
+    plugin: eca_count
+    configuration:
+      negate: false
+      case: false
+      left: vacation_list_unpaid_time
+      right: '0'
+      operator: greaterthan
+      type: numeric
+  Flow_0vdvz2q:
+    plugin: eca_count
+    configuration:
+      negate: false
+      case: false
+      left: vacation_list_unpaid_full
+      right: '0'
+      operator: greaterthan
+      type: numeric
+  Flow_0rtmqt8:
+    plugin: eca_count
+    configuration:
+      negate: false
+      case: false
+      left: vacation_list_unpaid_time
+      right: '0'
+      operator: greaterthan
+      type: numeric
+  Flow_1w8eas4:
+    plugin: eca_count
+    configuration:
+      negate: false
+      case: false
+      left: vacation_list_unpaid_full
+      right: '0'
+      operator: greaterthan
+      type: numeric
+  Flow_0np1ehr:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[vacation:field_unpaid_dates:start_date:custom:D]'
+      right: Mon
+      operator: equal
+      type: value
+  Flow_0jb28l5:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[vacation:field_unpaid_dates_full:start_date:custom:D]'
+      right: Mon
+      operator: equal
+      type: value
+  Flow_0gormoh:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[vacation:field_paid_dates:start_date:custom:D]'
+      right: Mon
+      operator: equal
+      type: value
+  Flow_1pgj93o:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[vacation:field_unpaid_dates:end_date:custom:D]'
+      right: Fri
+      operator: equal
+      type: value
+  Flow_1m3sidu:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[vacation:field_unpaid_dates_full:end_date:custom:D]'
+      right: Fri
+      operator: equal
+      type: value
+  Flow_04as3dl:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[vacation:field_paid_dates:end_date:custom:D]'
+      right: Fri
+      operator: equal
+      type: value
+  Flow_1vbrhri:
+    plugin: eca_count
+    configuration:
+      negate: false
+      case: false
+      left: vacation_list_paid
+      right: '0'
+      operator: greaterthan
+      type: numeric
+  Flow_1gg7t4f:
+    plugin: eca_count
+    configuration:
+      negate: false
+      case: false
+      left: vacation_list_unpaid_time
+      right: '0'
+      operator: greaterthan
+      type: numeric
+  Flow_0xj05t8:
+    plugin: eca_count
+    configuration:
+      negate: false
+      case: false
+      left: vacation_list_unpaid_full
+      right: '0'
+      operator: greaterthan
+      type: numeric
+  Flow_05369ks:
+    plugin: eca_count
+    configuration:
+      negate: false
+      case: false
+      left: vacation_list_paid
+      right: '0'
+      operator: greaterthan
+      type: numeric
+  Flow_0s4d90w:
+    plugin: eca_count
+    configuration:
+      negate: false
+      case: false
+      left: vacation_list_paid
+      right: '0'
+      operator: greaterthan
+      type: numeric
+  Flow_10jqvn7:
+    plugin: eca_count
+    configuration:
+      negate: false
+      case: false
+      left: vacation_list_paid
+      right: '0'
+      operator: greaterthan
+      type: numeric
+  Flow_1hxya35:
+    plugin: eca_count
+    configuration:
+      negate: false
+      case: false
+      left: vacation_list_unpaid_time
+      right: '0'
+      operator: greaterthan
+      type: numeric
+  Flow_17avo49:
+    plugin: eca_count
+    configuration:
+      negate: false
+      case: false
+      left: vacation_list_unpaid_full
+      right: '0'
+      operator: greaterthan
+      type: numeric
+  Flow_0h1zg1r:
+    plugin: eca_count
+    configuration:
+      negate: false
+      case: false
+      left: vacation_list_unpaid_time
+      right: '0'
+      operator: greaterthan
+      type: numeric
+  Flow_0iqxxqw:
+    plugin: eca_count
+    configuration:
+      negate: false
+      case: false
+      left: vacation_list_unpaid_full
+      right: '0'
+      operator: greaterthan
+      type: numeric
+  Flow_1vtmooi:
+    plugin: eca_count
+    configuration:
+      negate: false
+      case: false
+      left: vacation_list_unpaid_time
+      right: '0'
+      operator: greaterthan
+      type: numeric
+  Flow_0k12drh:
+    plugin: eca_count
+    configuration:
+      negate: false
+      case: false
+      left: vacation_list_unpaid_full
+      right: '0'
+      operator: greaterthan
+      type: numeric
+  Flow_0unn0qb:
+    plugin: eca_count
+    configuration:
+      negate: false
+      case: false
+      left: user_vacation_list
+      right: '0'
+      operator: greaterthan
+      type: numeric
+  Flow_08a03xq:
+    plugin: eca_scalar
+    configuration:
+      case: false
+      left: '[vacation:field_paid_dates:end_date:raw]'
+      right: '[user_vacation_item:field_paid_dates:start_date:raw]'
+      operator: lessthan
+      type: value
+      negate: true
+  Flow_0jvixjr:
+    plugin: eca_scalar
+    configuration:
+      case: false
+      left: '[vacation:field_paid_dates:end_date:raw]'
+      right: '[user_vacation_item:field_paid_dates:start_date:raw]'
+      operator: equal
+      type: value
+      negate: true
+  Flow_0e1emit:
+    plugin: eca_scalar
+    configuration:
+      case: false
+      left: '[vacation:field_paid_dates:start_date:raw]'
+      right: '[user_vacation_item:field_paid_dates:end_date:raw]'
+      operator: equal
+      type: value
+      negate: true
+  Flow_03x6xq8:
+    plugin: eca_scalar
+    configuration:
+      case: false
+      left: '[vacation:field_paid_dates:start_date:raw]'
+      right: '[user_vacation_item:field_paid_dates:end_date:raw]'
+      operator: greaterthan
+      type: value
+      negate: true
+  Flow_1kx6q2s:
+    plugin: eca_scalar
+    configuration:
+      case: false
+      left: '[new_vacation_date_start]'
+      right: '[old_vacation_date_end]'
+      operator: atleast
+      type: value
+      negate: true
+  Flow_1r9tlzd:
+    plugin: eca_scalar
+    configuration:
+      case: false
+      left: '[new_vacation_date_end]'
+      right: '[old_vacation_date_start]'
+      operator: atmost
+      type: value
+      negate: true
+  Flow_14sbwlz:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[new_vacation_date_start]'
+      right: '[old_vacation_date_end]'
+      operator: equal
+      type: value
+  Flow_0u1fbd5:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[new_vacation_date_end]'
+      right: '[old_vacation_date_start]'
+      operator: equal
+      type: value
+  Flow_0nuwzfr:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[vacation:field_paid_dates:end_date:raw]'
+      right: '[user_vacation_item:field_unpaid_dates_full:start_date:raw]'
+      operator: atmost
+      type: value
+  Flow_17gph5l:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[vacation:field_paid_dates:end_date:raw]'
+      right: '[user_vacation_item:field_unpaid_dates_full:start_date:raw]'
+      operator: equal
+      type: value
+  Flow_0l6b0di:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[vacation:field_paid_dates:start_date:raw]'
+      right: '[user_vacation_item:field_unpaid_dates_full:end_date:raw]'
+      operator: atleast
+      type: value
+  Flow_0qdvt9s:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[vacation:field_paid_dates:start_date:raw]'
+      right: '[user_vacation_item:field_unpaid_dates_full:end_date:raw]'
+      operator: equal
+      type: value
+  Flow_17z1buo:
+    plugin: eca_scalar
+    configuration:
+      case: false
+      left: '[current-date:raw]'
+      right: '[new_vacation_date_start]'
+      operator: atleast
+      type: value
+      negate: true
+  Flow_1jqtykr:
+    plugin: eca_entity_field_value_empty
+    configuration:
+      negate: false
+      field_name: nid
+      entity: node
+gateways:
+  Gateway_1snxvus:
+    type: 0
+    successors:
+      -
+        id: Gateway_0qu31y0
+        condition: ''
+      -
+        id: Activity_0hyrlak
+        condition: Flow_0d3o7il
+  Gateway_0qu31y0:
+    type: 0
+    successors:
+      -
+        id: Gateway_0dtaec6
+        condition: Flow_0f5w38q
+      -
+        id: Gateway_18mhbtu
+        condition: ''
+  Gateway_0dtaec6:
+    type: 0
+    successors:
+      -
+        id: Activity_1kuj4cy
+        condition: Flow_1ijufe0
+      -
+        id: Activity_1kuj4cy
+        condition: Flow_1fe34zl
+      -
+        id: Activity_1kuj4cy
+        condition: Flow_0bcxibs
+      -
+        id: Activity_1kuj4cy
+        condition: Flow_1v68qrz
+  Gateway_1br5yoj:
+    type: 0
+    successors:
+      -
+        id: Gateway_1bd3owk
+        condition: ''
+      -
+        id: Activity_1b4lh7p
+        condition: ''
+  Gateway_1xgw9ak:
+    type: 0
+    successors:
+      -
+        id: Activity_06ihzkb
+        condition: Flow_0q3mnzp
+      -
+        id: Gateway_0zmih37
+        condition: ''
+  Gateway_1bd3owk:
+    type: 0
+    successors:
+      -
+        id: Activity_0082e6y
+        condition: Flow_1ke5rf4
+      -
+        id: Gateway_1snxvus
+        condition: ''
+  Gateway_0zmih37:
+    type: 0
+    successors:
+      -
+        id: Activity_098quuc
+        condition: Flow_0dykly4
+      -
+        id: Activity_098quuc
+        condition: Flow_1fcqb6z
+      -
+        id: Activity_098quuc
+        condition: Flow_13snthr
+      -
+        id: Activity_098quuc
+        condition: Flow_1prknvk
+  Gateway_1dd5eu3:
+    type: 0
+    successors:
+      -
+        id: Activity_13abwb7
+        condition: Flow_1lmqysv
+      -
+        id: Activity_13abwb7
+        condition: Flow_0a7wdyd
+      -
+        id: Gateway_1o8w5vn
+        condition: ''
+  Gateway_1o8w5vn:
+    type: 0
+    successors:
+      -
+        id: Activity_1jbvc3t
+        condition: Flow_1og5i5q
+      -
+        id: Activity_1jbvc3t
+        condition: Flow_1dviuxp
+      -
+        id: Activity_1jbvc3t
+        condition: Flow_0qi4ura
+      -
+        id: Activity_1jbvc3t
+        condition: Flow_0kpqzxg
+  Gateway_00750yd:
+    type: 0
+    successors:
+      -
+        id: Activity_0fm9rr0
+        condition: Flow_0eq5rh2
+  Gateway_0pcjnna:
+    type: 0
+    successors:
+      -
+        id: Gateway_1xgw9ak
+        condition: ''
+      -
+        id: Activity_08hguvv
+        condition: ''
+  Gateway_10okj6b:
+    type: 0
+    successors:
+      -
+        id: Gateway_1dd5eu3
+        condition: ''
+      -
+        id: Activity_159pswx
+        condition: Flow_10jyhyf
+  Gateway_18mhbtu:
+    type: 0
+    successors:
+      -
+        id: Activity_1g57boy
+        condition: Flow_1nut33a
+      -
+        id: Gateway_17ie719
+        condition: ''
+  Gateway_0dgpd7r:
+    type: 0
+    successors:
+      -
+        id: Gateway_11rosgi
+        condition: Flow_0tzod2s
+      -
+        id: Gateway_11rosgi
+        condition: Flow_0bl0gwn
+      -
+        id: Gateway_11rosgi
+        condition: Flow_0r3oxe9
+  Gateway_0rkmhm7:
+    type: 0
+    successors:
+      -
+        id: Gateway_0o9i4dv
+        condition: Flow_0st471i
+      -
+        id: Gateway_0o9i4dv
+        condition: Flow_05khwpp
+      -
+        id: Gateway_0o9i4dv
+        condition: Flow_1qms5p1
+  Gateway_0iyxi3l:
+    type: 0
+    successors:
+      -
+        id: Activity_0u8d6gl
+        condition: Flow_1p9ckbb
+      -
+        id: Activity_0b561mg
+        condition: Flow_1pvcm14
+  Gateway_0o9i4dv:
+    type: 0
+    successors: {  }
+  Gateway_1ozqekt:
+    type: 0
+    successors:
+      -
+        id: Gateway_10rka08
+        condition: Flow_1prdenf
+      -
+        id: Gateway_10dlsqk
+        condition: Flow_17s09v3
+  Gateway_11rosgi:
+    type: 0
+    successors: {  }
+  Gateway_0jjcsy2:
+    type: 0
+    successors:
+      -
+        id: Gateway_0njczs3
+        condition: Flow_0k08c89
+      -
+        id: Gateway_1qnoh7i
+        condition: Flow_1rcvmht
+  Gateway_1urt8ty:
+    type: 0
+    successors:
+      -
+        id: Activity_14jj69t
+        condition: ''
+  Gateway_0njczs3:
+    type: 0
+    successors:
+      -
+        id: Gateway_0wy107m
+        condition: Flow_1afosco
+      -
+        id: Gateway_06fs7yq
+        condition: Flow_11gf4wm
+  Gateway_10dlsqk:
+    type: 0
+    successors:
+      -
+        id: Gateway_0j2aqya
+        condition: Flow_1te7ogn
+      -
+        id: Gateway_0xxptlf
+        condition: Flow_1ugopr5
+  Gateway_10rka08:
+    type: 0
+    successors:
+      -
+        id: Activity_07s3y99
+        condition: ''
+  Gateway_0oza2p5:
+    type: 0
+    successors:
+      -
+        id: Gateway_0s5899n
+        condition: Flow_1m3sidu
+      -
+        id: Gateway_0db3ygt
+        condition: ''
+  Gateway_1v6lfim:
+    type: 0
+    successors:
+      -
+        id: Gateway_1f9c6hd
+        condition: Flow_1pgj93o
+      -
+        id: Gateway_14zq8ez
+        condition: ''
+  Gateway_16i6pri:
+    type: 0
+    successors:
+      -
+        id: Activity_0xgp1bf
+        condition: Flow_1lfi0vn
+      -
+        id: Activity_0xgp1bf
+        condition: Flow_1md4qv6
+      -
+        id: Activity_0xgp1bf
+        condition: Flow_0vdvz2q
+  Gateway_1v5frfl:
+    type: 0
+    successors: {  }
+  Gateway_0tc53by:
+    type: 0
+    successors:
+      -
+        id: Activity_0itz8k7
+        condition: Flow_0nailju
+      -
+        id: Activity_0itz8k7
+        condition: Flow_0rtmqt8
+      -
+        id: Activity_0itz8k7
+        condition: Flow_1w8eas4
+  Gateway_1qnoh7i:
+    type: 0
+    successors:
+      -
+        id: Activity_14y4tqo
+        condition: ''
+  Gateway_06fs7yq:
+    type: 0
+    successors:
+      -
+        id: Activity_05684sk
+        condition: ''
+  Gateway_0wy107m:
+    type: 0
+    successors:
+      -
+        id: Activity_05vmj96
+        condition: ''
+  Gateway_0uapk32:
+    type: 0
+    successors:
+      -
+        id: Activity_0ohnykr
+        condition: ''
+  Gateway_0qx6bcb:
+    type: 0
+    successors:
+      -
+        id: Activity_0ku1lim
+        condition: ''
+  Gateway_1lox44p:
+    type: 0
+    successors:
+      -
+        id: Activity_0z2w1of
+        condition: ''
+  Gateway_0y6np3y:
+    type: 0
+    successors:
+      -
+        id: Gateway_1ozqekt
+        condition: ''
+  Gateway_1f9c6hd:
+    type: 0
+    successors:
+      -
+        id: Activity_1ve8c9y
+        condition: ''
+  Gateway_0s5899n:
+    type: 0
+    successors:
+      -
+        id: Activity_08mdd9b
+        condition: ''
+  Gateway_02jo1l6:
+    type: 0
+    successors:
+      -
+        id: Activity_1ypplmc
+        condition: ''
+  Gateway_0xxptlf:
+    type: 0
+    successors:
+      -
+        id: Activity_0d5hz14
+        condition: ''
+  Gateway_15z4mnd:
+    type: 0
+    successors:
+      -
+        id: Activity_0kuf0q6
+        condition: ''
+  Gateway_0j2aqya:
+    type: 0
+    successors:
+      -
+        id: Activity_0k1ieaw
+        condition: ''
+  Gateway_0v65rsv:
+    type: 0
+    successors:
+      -
+        id: Activity_0kbwtdk
+        condition: ''
+  Gateway_172ohpe:
+    type: 0
+    successors:
+      -
+        id: Activity_0qpobwv
+        condition: ''
+  Gateway_17ie719:
+    type: 0
+    successors:
+      -
+        id: Gateway_02jo1l6
+        condition: Flow_04as3dl
+      -
+        id: Gateway_0jtf94b
+        condition: ''
+  Gateway_0kal6nz:
+    type: 0
+    successors:
+      -
+        id: Activity_1uaien7
+        condition: Flow_1vbrhri
+  Gateway_0xudj2m:
+    type: 0
+    successors:
+      -
+        id: Activity_13nyfxl
+        condition: Flow_10jqvn7
+      -
+        id: Activity_13nyfxl
+        condition: Flow_1hxya35
+      -
+        id: Activity_13nyfxl
+        condition: Flow_17avo49
+  Gateway_0zcej0t:
+    type: 0
+    successors:
+      -
+        id: Activity_1fy4a9t
+        condition: Flow_05369ks
+  Gateway_0eu63r9:
+    type: 0
+    successors:
+      -
+        id: Activity_1wbrn0f
+        condition: Flow_0s4d90w
+      -
+        id: Activity_1wbrn0f
+        condition: Flow_1vtmooi
+      -
+        id: Activity_1wbrn0f
+        condition: Flow_0k12drh
+  Gateway_0j7pj6e:
+    type: 0
+    successors:
+      -
+        id: Activity_05h4a5d
+        condition: ''
+  Gateway_0ip3v0f:
+    type: 0
+    successors:
+      -
+        id: Activity_0xh3zss
+        condition: ''
+  Gateway_14zq8ez:
+    type: 0
+    successors:
+      -
+        id: Gateway_1lox44p
+        condition: Flow_0np1ehr
+  Gateway_0db3ygt:
+    type: 0
+    successors:
+      -
+        id: Gateway_0qx6bcb
+        condition: Flow_0jb28l5
+  Gateway_0jtf94b:
+    type: 0
+    successors:
+      -
+        id: Gateway_0uapk32
+        condition: Flow_0gormoh
+  Gateway_072xy72:
+    type: 0
+    successors: {  }
+  Gateway_0ffcib5:
+    type: 0
+    successors:
+      -
+        id: Gateway_072xy72
+        condition: Flow_0xj05t8
+  Gateway_16o8p37:
+    type: 0
+    successors: {  }
+  Gateway_06ki258:
+    type: 0
+    successors:
+      -
+        id: Gateway_16o8p37
+        condition: Flow_1gg7t4f
+  Gateway_14i44vs:
+    type: 0
+    successors: {  }
+  Gateway_0zqum4s:
+    type: 0
+    successors:
+      -
+        id: Gateway_14i44vs
+        condition: Flow_0h1zg1r
+  Gateway_13k5xn9:
+    type: 0
+    successors: {  }
+  Gateway_0cq6z4t:
+    type: 0
+    successors:
+      -
+        id: Gateway_13k5xn9
+        condition: Flow_0iqxxqw
+  Gateway_1idtl73:
+    type: 0
+    successors:
+      -
+        id: Activity_0vsyve0
+        condition: ''
+      -
+        id: Gateway_0iyxi3l
+        condition: ''
+  Gateway_151yhwx:
+    type: 0
+    successors:
+      -
+        id: Activity_11vzzof
+        condition: Flow_0unn0qb
+  Gateway_0c9p3vr:
+    type: 0
+    successors:
+      -
+        id: Gateway_10csmak
+        condition: ''
+  Gateway_1ewch4q:
+    type: 0
+    successors:
+      -
+        id: Gateway_0c9p3vr
+        condition: Flow_08a03xq
+      -
+        id: Gateway_0c9p3vr
+        condition: Flow_0jvixjr
+      -
+        id: Gateway_01atccc
+        condition: ''
+  Gateway_01atccc:
+    type: 0
+    successors:
+      -
+        id: Gateway_0fmg1u6
+        condition: Flow_0e1emit
+      -
+        id: Gateway_0fmg1u6
+        condition: Flow_03x6xq8
+  Gateway_0fmg1u6:
+    type: 0
+    successors:
+      -
+        id: Gateway_10csmak
+        condition: ''
+  Gateway_0ftp98j:
+    type: 0
+    successors:
+      -
+        id: Activity_09jtrxa
+        condition: ''
+  Gateway_00yn4ji:
+    type: 0
+    successors:
+      -
+        id: Gateway_151yhwx
+        condition: ''
+  Gateway_0msn4d8:
+    type: 0
+    successors:
+      -
+        id: Gateway_03fmz0o
+        condition: Flow_1r9tlzd
+      -
+        id: Gateway_0occjrg
+        condition: ''
+  Gateway_0occjrg:
+    type: 0
+    successors:
+      -
+        id: Gateway_13vsenq
+        condition: Flow_14sbwlz
+      -
+        id: Gateway_13vsenq
+        condition: Flow_0u1fbd5
+      -
+        id: Gateway_00yn4ji
+        condition: ''
+  Gateway_03fmz0o:
+    type: 0
+    successors:
+      -
+        id: Gateway_19exns1
+        condition: Flow_1kx6q2s
+  Gateway_13vsenq:
+    type: 0
+    successors:
+      -
+        id: Gateway_19exns1
+        condition: ''
+  Gateway_10csmak:
+    type: 0
+    successors: {  }
+  Gateway_13306to:
+    type: 0
+    successors:
+      -
+        id: Gateway_1ejqwz7
+        condition: Flow_0nuwzfr
+      -
+        id: Gateway_08z653n
+        condition: ''
+  Gateway_08z653n:
+    type: 0
+    successors:
+      -
+        id: Gateway_00olub7
+        condition: Flow_17gph5l
+      -
+        id: Gateway_00olub7
+        condition: Flow_0qdvt9s
+  Gateway_1ejqwz7:
+    type: 0
+    successors:
+      -
+        id: Gateway_1nx55vz
+        condition: Flow_0l6b0di
+  Gateway_00olub7:
+    type: 0
+    successors:
+      -
+        id: Gateway_1nx55vz
+        condition: ''
+  Gateway_1nx55vz:
+    type: 0
+    successors: {  }
+  Gateway_19exns1:
+    type: 0
+    successors:
+      -
+        id: Activity_19hnln1
+        condition: ''
+  Gateway_1ndi7y7:
+    type: 0
+    successors:
+      -
+        id: Gateway_1j7fekn
+        condition: ''
+      -
+        id: Gateway_1ap437d
+        condition: ''
+  Gateway_1j7fekn:
+    type: 0
+    successors:
+      -
+        id: Gateway_0zlhb98
+        condition: ''
+      -
+        id: Gateway_0zlhb98
+        condition: ''
+  Gateway_1ap437d:
+    type: 0
+    successors:
+      -
+        id: Gateway_0drlkvp
+        condition: ''
+  Gateway_0zlhb98:
+    type: 0
+    successors:
+      -
+        id: Gateway_0drlkvp
+        condition: ''
+  Gateway_0drlkvp:
+    type: 0
+    successors: {  }
+  Gateway_0u1t5c0:
+    type: 0
+    successors:
+      -
+        id: Activity_0yqa6hu
+        condition: ''
+  Gateway_02sdnbd:
+    type: 0
+    successors:
+      -
+        id: Activity_1uv0faw
+        condition: ''
+actions:
+  Activity_1fq8yyk:
+    plugin: eca_switch_account
+    label: 'Switch user'
+    configuration:
+      user_id: '1'
+    successors:
+      -
+        id: Activity_0vgb7fe
+        condition: ''
+  Activity_0hiqfcq:
+    plugin: eca_form_field_set_error
+    label: 'Set test val error'
+    configuration:
+      message: 'TEST DEBAG ERROR'
+      field_name: body
+    successors: {  }
+  Activity_02a1c4f:
+    plugin: eca_write_log_message
+    label: msg
+    configuration:
+      channel: eca
+      severity: '6'
+      message: |-
+        VALIDATION
+        __
+        [node:nid]
+        _
+        [node:created:raw]
+        _
+        [vacation:author:field_vacation_balance_days]
+        _
+        [vacation:field_paid_state:entity:tid]
+        __
+        [vacation:field_unpaid_type:entity:tid]
+        __
+        [vacation:field_paid_dates]
+        __
+        [vacation:field_paid_dates:start_date]
+        __
+        [vacation:field_paid_dates:value]
+        __
+        [current-date:custom:Y-m-d]
+        __
+        [vacation:field_paid_dates:start_date:custom:D]
+        __
+        [vacation:field_paid_dates:end_date:custom:D]
+    successors:
+      -
+        id: Gateway_1idtl73
+        condition: Flow_1jqtykr
+  Activity_0b561mg:
+    plugin: eca_write_log_message
+    label: msg
+    configuration:
+      channel: eca
+      severity: '3'
+      message: 'UNPAID VALIDATION'
+    successors:
+      -
+        id: Activity_11ji7b5
+        condition: Flow_0low68x
+      -
+        id: Activity_05yu0cj
+        condition: Flow_1kwjnmt
+  Activity_199x84n:
+    plugin: eca_write_log_message
+    label: msg
+    configuration:
+      channel: eca
+      severity: '3'
+      message: |-
+        PAID VALIDATION
+        __
+        [full_days]
+    successors:
+      -
+        id: Gateway_1br5yoj
+        condition: ''
+  Activity_1mre3mq:
+    plugin: 'eca_tamper:math'
+    label: 'Calculate days'
+    configuration:
+      operation: subtraction
+      flip: false
+      value: '[vacation:field_paid_dates:start_date:raw]'
+      eca_data: '[vacation:field_paid_dates:end_date:raw]'
+      eca_token_name: days_in_sec
+    successors:
+      -
+        id: Activity_1ptzpvu
+        condition: ''
+  Activity_1ptzpvu:
+    plugin: 'eca_tamper:math'
+    label: 'Calculate days'
+    configuration:
+      operation: division
+      flip: false
+      value: '86400'
+      eca_data: '[days_in_sec]'
+      eca_token_name: full_days
+    successors:
+      -
+        id: Activity_1b2cjby
+        condition: ''
+  Activity_1b2cjby:
+    plugin: 'eca_tamper:math'
+    label: 'Calculate days'
+    configuration:
+      operation: addition
+      flip: false
+      value: '1'
+      eca_data: '[full_days]'
+      eca_token_name: full_days
+    successors:
+      -
+        id: Activity_199x84n
+        condition: ''
+  Activity_0w1z01d:
+    plugin: eca_form_field_set_error
+    label: 'Set validation error'
+    configuration:
+      message: 'ERROR! You cannot take a vacation for more than 14 days!'
+      field_name: field_paid_dates
+    successors: {  }
+  Activity_16fcazs:
+    plugin: eca_form_field_get_value
+    label: 'Get paid dates'
+    configuration:
+      token_name: field_paid_dates
+      field_name: field_paid_dates
+      strip_tags: true
+      trim: true
+      xss_filter: true
+    successors:
+      -
+        id: Activity_0irvklo
+        condition: ''
+  Activity_0irvklo:
+    plugin: eca_form_field_get_value
+    label: 'Get paid state'
+    configuration:
+      token_name: field_paid_state
+      field_name: field_paid_state
+      strip_tags: true
+      trim: true
+      xss_filter: true
+    successors:
+      -
+        id: Activity_177bckd
+        condition: ''
+  Activity_177bckd:
+    plugin: eca_endpoint_get_request_content
+    label: 'get req content'
+    configuration:
+      token_name: test
+    successors: {  }
+  Activity_1lrbsjf:
+    plugin: eca_get_field_value
+    label: 'Get f val'
+    configuration:
+      field_name: field_paid_state
+      token_name: field_paid_state_2
+      object: entity
+    successors: {  }
+  Activity_0vgb7fe:
+    plugin: eca_form_build_entity
+    label: 'Build node from submitted values'
+    configuration:
+      token_name: vacation
+    successors:
+      -
+        id: Activity_02a1c4f
+        condition: ''
+  Activity_0082e6y:
+    plugin: eca_write_log_message
+    label: msg
+    configuration:
+      channel: eca
+      severity: '3'
+      message: |-
+        ERROR DAYS > 14
+        __
+        [full_days] > 14
+    successors:
+      -
+        id: Activity_0w1z01d
+        condition: ''
+  Activity_0u8d6gl:
+    plugin: eca_token_set_value
+    label: 'Create full_days token'
+    configuration:
+      token_name: full_days
+      token_value: '0'
+      use_yaml: false
+    successors:
+      -
+        id: Activity_1mre3mq
+        condition: ''
+  Activity_0hyrlak:
+    plugin: eca_write_log_message
+    label: msg
+    configuration:
+      channel: eca
+      severity: '3'
+      message: |-
+        ERROR CANT TAKE VAC FOR TODAY
+        __
+        [vacation:field_paid_dates:start_date:raw]
+        __
+        [current-date:raw]
+    successors:
+      -
+        id: Activity_1xcdtzt
+        condition: ''
+  Activity_1xcdtzt:
+    plugin: eca_form_field_set_error
+    label: 'Set validation error'
+    configuration:
+      message: 'ERROR! You cannot take paid vacation today!'
+      field_name: field_paid_dates
+    successors: {  }
+  Activity_059cq4l:
+    plugin: eca_form_field_set_error
+    label: 'Set validation error'
+    configuration:
+      message: 'ERROR! You cannot take a paid vacation if its start and end are on a Sat or Sun, and the total vacation days less than 7 days!'
+      field_name: field_paid_dates
+    successors: {  }
+  Activity_1kuj4cy:
+    plugin: eca_write_log_message
+    label: msg
+    configuration:
+      channel: eca
+      severity: '3'
+      message: |-
+        ERROR DAYS < 7
+        __
+        [full_days] < 7
+        __
+        [vacation:field_paid_dates:start_date:custom:D]
+        __
+        [vacation:field_paid_dates:end_date:custom:D]
+    successors:
+      -
+        id: Activity_059cq4l
+        condition: ''
+  Activity_0be8k93:
+    plugin: eca_write_log_message
+    label: msg
+    configuration:
+      channel: eca
+      severity: '3'
+      message: |-
+        ERROR CANT TAKE VAC FOR DATE LESS THAT TODAY
+        __
+        [current-date:raw]
+        __
+        [vacation:field_paid_dates:start_date:raw]
+    successors:
+      -
+        id: Activity_1dq283i
+        condition: ''
+  Activity_1dq283i:
+    plugin: eca_form_field_set_error
+    label: 'Set validation error'
+    configuration:
+      message: 'ERROR! You cannot take a vacation on a date that has already passed!'
+      field_name: field_paid_dates
+    successors: {  }
+  Activity_06ihzkb:
+    plugin: eca_write_log_message
+    label: msg
+    configuration:
+      channel: eca
+      severity: '3'
+      message: |-
+        ERROR CANT TAKE VAC FOR TODAY
+        __
+        [vacation:field_paid_dates:start_date:raw]
+        __
+        [current-date:raw]
+    successors:
+      -
+        id: Activity_0sfmdh4
+        condition: ''
+  Activity_0sfmdh4:
+    plugin: eca_form_field_set_error
+    label: 'Set validation error'
+    configuration:
+      message: 'ERROR! You cannot take unpaid vacation today only specific time!'
+      field_name: field_unpaid_dates_full
+    successors: {  }
+  Activity_098quuc:
+    plugin: eca_write_log_message
+    label: msg
+    configuration:
+      channel: eca
+      severity: '3'
+      message: |-
+        ERROR FREE DAYS
+        __
+        [vacation:field_unpaid_dates_full:start_date:custom:D]
+        __
+        [vacation:field_unpaid_dates_full:end_date:custom:D]
+    successors:
+      -
+        id: Activity_13lxilw
+        condition: ''
+  Activity_13lxilw:
+    plugin: eca_form_field_set_error
+    label: 'Set validation error'
+    configuration:
+      message: 'ERROR! You cannot take a unpaid vacation if its start and end are on a Sat or Sun!'
+      field_name: field_unpaid_dates_full
+    successors: {  }
+  Activity_05yu0cj:
+    plugin: eca_write_log_message
+    label: msg
+    configuration:
+      channel: eca
+      severity: '3'
+      message: |-
+        UNPAID Specific time VALIDATION
+        __
+        [vacation:field_unpaid_dates:start_date:custom:G]
+        __
+        [vacation:field_unpaid_dates:end_date:custom:G]
+    successors:
+      -
+        id: Activity_0f1d411
+        condition: ''
+  Activity_11ji7b5:
+    plugin: eca_write_log_message
+    label: msg
+    configuration:
+      channel: eca
+      severity: '3'
+      message: |-
+        UNPAID FULL DAY VALIDATION
+        __
+        [vacation:field_unpaid_dates_full:value]
+        __
+        [current-date:custom:Y-m-d]
+        __
+        [vacation:field_unpaid_dates_full:start_date:custom:D]
+    successors:
+      -
+        id: Gateway_0pcjnna
+        condition: ''
+  Activity_13abwb7:
+    plugin: eca_write_log_message
+    label: msg
+    configuration:
+      channel: eca
+      severity: '3'
+      message: |-
+        ERROR TIME
+        __
+        [vacation:field_unpaid_dates:start_date:custom:G]
+        _
+        [vacation:field_unpaid_dates:end_date:custom:G]
+        __
+        [vacation:field_unpaid_dates:end_date:custom:i]
+        __
+        [vacation:field_unpaid_dates:end_date:custom:s]
+        __
+        [result_start_time]
+        _
+        [result_end_time]
+        _
+        [vacation:field_unpaid_dates:end_date:custom:Y-m-d\TH:i:s]
+        _
+        [vacation:field_unpaid_dates:end_date:raw]
+        _
+        [vacation:field_unpaid_dates:end_date:custom:Y-m-d\T18:00:00]
+        _
+        [new_result_end_time]
+    successors:
+      -
+        id: Activity_05kpvcn
+        condition: ''
+  Activity_05kpvcn:
+    plugin: eca_form_field_set_error
+    label: 'Set validation error'
+    configuration:
+      message: 'ERROR! The time must be within the business hours zone, 09:00-18:00!'
+      field_name: field_unpaid_dates
+    successors: {  }
+  Activity_1jbvc3t:
+    plugin: eca_write_log_message
+    label: msg
+    configuration:
+      channel: eca
+      severity: '3'
+      message: |-
+        ERROR FREE DAYS
+        __
+        [vacation:field_unpaid_dates:start_date:custom:D]
+        __
+        [vacation:field_unpaid_dates:end_date:custom:D]
+    successors:
+      -
+        id: Activity_0n14afu
+        condition: ''
+  Activity_0n14afu:
+    plugin: eca_form_field_set_error
+    label: 'Set validation error'
+    configuration:
+      message: 'ERROR! You cannot take a unpaid vacation if its start and end are on a Sat or Sun!'
+      field_name: field_unpaid_dates
+    successors: {  }
+  Activity_01wufsc:
+    plugin: 'eca_tamper:math'
+    label: 'Calculate end time'
+    configuration:
+      operation: addition
+      flip: false
+      value: '[vacation:field_unpaid_dates:end_date:custom:i]'
+      eca_data: '[vacation:field_unpaid_dates:end_date:custom:G]'
+      eca_token_name: result_end_time
+    successors:
+      -
+        id: Activity_1n9tgin
+        condition: ''
+  Activity_1n9tgin:
+    plugin: 'eca_tamper:math'
+    label: 'Calculate end time'
+    configuration:
+      operation: addition
+      flip: false
+      value: '[vacation:field_unpaid_dates:end_date:custom:s]'
+      eca_data: '[result_end_time]'
+      eca_token_name: result_end_time
+    successors: {  }
+  Activity_1x5o8bu:
+    plugin: 'eca_tamper:math'
+    label: 'Calculate start time'
+    configuration:
+      operation: addition
+      flip: false
+      value: '[vacation:field_unpaid_dates:start_date:custom:i]'
+      eca_data: '[vacation:field_unpaid_dates:start_date:custom:G]'
+      eca_token_name: result_start_time
+    successors:
+      -
+        id: Activity_0d7ssrp
+        condition: ''
+  Activity_0d7ssrp:
+    plugin: 'eca_tamper:math'
+    label: 'Calculate start time'
+    configuration:
+      operation: addition
+      flip: false
+      value: '[vacation:field_unpaid_dates:start_date:custom:s]'
+      eca_data: '[result_start_time]'
+      eca_token_name: result_start_time
+    successors:
+      -
+        id: Activity_01wufsc
+        condition: ''
+  Activity_1k00xll:
+    plugin: eca_form_field_set_error
+    label: 'Set validation error'
+    configuration:
+      message: 'ERROR! The time start cannot equal time end!'
+      field_name: field_unpaid_dates
+    successors: {  }
+  Activity_0fm9rr0:
+    plugin: eca_write_log_message
+    label: msg
+    configuration:
+      channel: eca
+      severity: '3'
+      message: |-
+        ERROR TIME
+        __
+        [vacation:field_unpaid_dates:start_date:custom:G]
+        __
+        [vacation:field_unpaid_dates:start_date:custom:i]
+        __
+        [vacation:field_unpaid_dates:start_date:custom:s]
+        __
+        [result_start_time]
+        __
+        [vacation:field_unpaid_dates:end_date:custom:G]
+        __
+        [vacation:field_unpaid_dates:end_date:custom:i]
+        __
+        [vacation:field_unpaid_dates:end_date:custom:s]
+        __
+        [result_end_time]
+    successors:
+      -
+        id: Activity_1k00xll
+        condition: ''
+  Activity_0g68o88:
+    plugin: eca_write_log_message
+    label: msg
+    configuration:
+      channel: eca
+      severity: '3'
+      message: |-
+        ERROR CANT TAKE VAC FOR DATE LESS THAT TODAY
+        __
+        [curr_date_raw]
+        __
+        [start_date_raw]
+    successors:
+      -
+        id: Activity_0unuzww
+        condition: ''
+  Activity_0unuzww:
+    plugin: eca_form_field_set_error
+    label: 'Set validation error'
+    configuration:
+      message: 'ERROR! You cannot take a vacation on a date that has already passed!'
+      field_name: field_unpaid_dates_full
+    successors: {  }
+  Activity_0tdw764:
+    plugin: 'eca_tamper:strtotime'
+    label: 'Start Date to timestamp'
+    configuration:
+      eca_data: '[vacation:field_unpaid_dates_full:start_date:custom:Y-m-d]'
+      eca_token_name: '[start_date_raw]'
+    successors:
+      -
+        id: Activity_0g68o88
+        condition: Flow_0t456ti
+  Activity_08hguvv:
+    plugin: 'eca_tamper:strtotime'
+    label: 'Curr Date to timestamp'
+    configuration:
+      eca_data: '[current-date:custom:Y-m-d]'
+      eca_token_name: '[curr_date_raw]'
+    successors:
+      -
+        id: Activity_0tdw764
+        condition: ''
+  Activity_159pswx:
+    plugin: eca_write_log_message
+    label: msg
+    configuration:
+      channel: eca
+      severity: '3'
+      message: |-
+        ERROR CANT TAKE VAC FOR DATE LESS THAT TODAY
+        __
+        [current-date:raw]
+        __
+        [vacation:field_unpaid_dates:start_date:raw]
+    successors:
+      -
+        id: Activity_0rwbfmw
+        condition: ''
+  Activity_0rwbfmw:
+    plugin: eca_form_field_set_error
+    label: 'Set validation error'
+    configuration:
+      message: 'ERROR! You cannot take a vacation on a date that has already passed!'
+      field_name: field_unpaid_dates
+    successors: {  }
+  Activity_1dyxopt:
+    plugin: 'eca_tamper:strtotime'
+    label: 'Start Date to timestamp'
+    configuration:
+      eca_data: '[vacation:field_paid_dates:start_date:custom:Y-m-d]'
+      eca_token_name: '[start_date_raw]'
+    successors:
+      -
+        id: Activity_0be8k93
+        condition: Flow_1790nst
+  Activity_1b4lh7p:
+    plugin: 'eca_tamper:strtotime'
+    label: 'Curr Date to timestamp'
+    configuration:
+      eca_data: '[current-date:custom:Y-m-d]'
+      eca_token_name: '[curr_date_raw]'
+    successors:
+      -
+        id: Activity_1dyxopt
+        condition: ''
+  Activity_0f1d411:
+    plugin: 'eca_tamper:strtotime'
+    label: 'Str to timestamp'
+    configuration:
+      eca_data: '[vacation:field_unpaid_dates:end_date:custom:Y-m-d\T18:00:00]'
+      eca_token_name: new_result_end_time
+    successors:
+      -
+        id: Gateway_10okj6b
+        condition: ''
+  Activity_1g57boy:
+    plugin: eca_write_log_message
+    label: msg
+    configuration:
+      channel: eca
+      severity: '3'
+      message: |-
+        ERROR VAC DAYS > BALANCE
+        _
+        [full_days]
+        _
+        [vacation:author:field_vacation_balance_days]
+    successors:
+      -
+        id: Activity_1whqycm
+        condition: ''
+  Activity_1whqycm:
+    plugin: eca_form_field_set_error
+    label: 'Set validation error'
+    configuration:
+      message: 'ERROR! Insufficient paid vacation days on the balance sheet!'
+      field_name: field_paid_dates
+    successors: {  }
+  Activity_0qdd59p:
+    plugin: eca_views_query
+    label: 'Execute view find vacation start paid'
+    configuration:
+      token_name: vacation_list_paid
+      view_id: find_vacations_between_dates
+      display_id: start_paid
+      arguments: '[offset_paid_start_date]/[node:author:uid]'
+    successors:
+      -
+        id: Gateway_172ohpe
+        condition: ''
+  Activity_0xgp1bf:
+    plugin: eca_write_log_message
+    label: msg
+    configuration:
+      channel: eca
+      severity: '1'
+      message: |-
+        FRIDAY 2
+        _
+        [vacation:field_paid_dates:end_date:custom:D]
+        _
+        [vacation:field_unpaid_dates_full:start_date:custom:D]
+        _
+        [vacation:field_unpaid_dates:start_date:custom:D]
+        _
+        [vacation_list_paid]
+        _
+        [vacation_list_unpaid_full]
+        _
+        [vacation_list_unpaid_time]
+    successors:
+      -
+        id: Activity_07vqtja
+        condition: ''
+  Activity_07vqtja:
+    plugin: eca_form_field_set_error
+    label: 'Set validation error'
+    configuration:
+      message: 'ERROR! NO NO NO BRO, STOP! U THINK I AM STUPID!? FRIDAY'
+      field_name: field_unpaid_dates_full
+    successors: {  }
+  Activity_0itz8k7:
+    plugin: eca_write_log_message
+    label: msg
+    configuration:
+      channel: eca
+      severity: '1'
+      message: |-
+        MONDAY 2
+        _
+        [vacation:field_paid_dates:end_date:custom:D]
+        _
+        [vacation:field_unpaid_dates_full:start_date:custom:D]
+        _
+        [vacation:field_unpaid_dates:start_date:custom:D]
+        _
+        [vacation_list_paid]
+        _
+        [vacation_list_unpaid_full]
+        _
+        [vacation_list_unpaid_time]
+    successors:
+      -
+        id: Activity_0gns2y6
+        condition: ''
+  Activity_0gns2y6:
+    plugin: eca_form_field_set_error
+    label: 'Set validation error'
+    configuration:
+      message: 'ERROR! NO NO NO BRO, STOP! U THINK I AM STUPID!? MONDAY!'
+      field_name: field_unpaid_dates
+    successors: {  }
+  Activity_0t15pt8:
+    plugin: eca_views_query
+    label: 'Execute view find vacation start unpaid full'
+    configuration:
+      token_name: vacation_list_unpaid_full
+      view_id: find_vacations_between_dates
+      display_id: start_unpaid_full
+      arguments: '[offset_unpaid_full_start_date]/[node:author:uid]'
+    successors:
+      -
+        id: Gateway_0v65rsv
+        condition: ''
+  Activity_0nd4nbf:
+    plugin: eca_views_query
+    label: 'Execute view find vacation start unpaid time'
+    configuration:
+      token_name: vacation_list_unpaid_full
+      view_id: find_vacations_between_dates
+      display_id: start_unpaid_full
+      arguments: '[offset_unpaid_time_start_date]/[node:author:uid]'
+    successors:
+      -
+        id: Gateway_15z4mnd
+        condition: ''
+  Activity_1ve8c9y:
+    plugin: 'eca_tamper:math'
+    label: 'Offset unpaid time'
+    configuration:
+      operation: addition
+      flip: false
+      value: '259200'
+      eca_data: '[vacation:field_unpaid_dates:end_date:raw]'
+      eca_token_name: offset_unpaid_time_start_timestamp
+    successors:
+      -
+        id: Activity_1wva0q6
+        condition: ''
+  Activity_08mdd9b:
+    plugin: 'eca_tamper:math'
+    label: 'Offset unpaid date'
+    configuration:
+      operation: addition
+      flip: false
+      value: '259200'
+      eca_data: '[vacation:field_unpaid_dates_full:end_date:raw]'
+      eca_token_name: offset_unpaid_full_start_timestamp
+    successors:
+      -
+        id: Activity_1vvedfq
+        condition: ''
+  Activity_1ypplmc:
+    plugin: 'eca_tamper:math'
+    label: 'Offset paid date'
+    configuration:
+      operation: addition
+      flip: false
+      value: '259200'
+      eca_data: '[vacation:field_paid_dates:end_date:raw]'
+      eca_token_name: offset_paid_start_timestamp
+    successors:
+      -
+        id: Activity_02b2jvp
+        condition: ''
+  Activity_02b2jvp:
+    plugin: 'eca_tamper:timetodate'
+    label: 'Paid timestamp to date'
+    configuration:
+      date_format: Y-m-d
+      eca_data: '[offset_paid_start_timestamp]'
+      eca_token_name: offset_paid_start_date
+    successors:
+      -
+        id: Activity_0qdd59p
+        condition: ''
+  Activity_1vvedfq:
+    plugin: 'eca_tamper:timetodate'
+    label: 'Unpaid timestamp to date'
+    configuration:
+      date_format: Y-m-d
+      eca_data: '[offset_unpaid_full_start_timestamp]'
+      eca_token_name: offset_unpaid_full_start_date
+    successors:
+      -
+        id: Activity_0t15pt8
+        condition: ''
+      -
+        id: Activity_08m478s
+        condition: ''
+      -
+        id: Activity_062njlg
+        condition: ''
+  Activity_1wva0q6:
+    plugin: 'eca_tamper:timetodate'
+    label: 'Unpaid time timestamp to date'
+    configuration:
+      date_format: Y-m-d
+      eca_data: '[offset_unpaid_time_start_timestamp]'
+      eca_token_name: offset_unpaid_time_start_date
+    successors:
+      -
+        id: Activity_0tnqw0y
+        condition: ''
+      -
+        id: Activity_0nd4nbf
+        condition: ''
+      -
+        id: Activity_1urt8fk
+        condition: ''
+  Activity_0kbwtdk:
+    plugin: eca_write_log_message
+    label: msg
+    configuration:
+      channel: eca
+      severity: '1'
+      message: |-
+        FRIDAY 1
+        _
+        [offset_paid_start_timestamp]
+        _
+        [offset_paid_start_date]
+        _
+        [offset_unpaid_full_start_timestamp]
+        _
+        [offset_unpaid_full_start_date]
+        _
+        [offset_unpaid_time_start_timestamp]
+        _
+        [offset_unpaid_time_start_date]
+    successors:
+      -
+        id: Gateway_16i6pri
+        condition: ''
+  Activity_0ohnykr:
+    plugin: 'eca_tamper:math'
+    label: 'Offset paid date'
+    configuration:
+      operation: subtraction
+      flip: false
+      value: '259200'
+      eca_data: '[vacation:field_paid_dates:start_date:raw]'
+      eca_token_name: offset_paid_end_timestamp
+    successors:
+      -
+        id: Activity_0dhfi43
+        condition: ''
+  Activity_0ku1lim:
+    plugin: 'eca_tamper:math'
+    label: 'Offset unpaid date'
+    configuration:
+      operation: subtraction
+      flip: false
+      value: '259200'
+      eca_data: '[vacation:field_unpaid_dates_full:start_date:raw]'
+      eca_token_name: offset_unpaid_full_end_timestamp
+    successors:
+      -
+        id: Activity_1mdn0e6
+        condition: ''
+  Activity_0z2w1of:
+    plugin: 'eca_tamper:math'
+    label: 'Offset unpaid time'
+    configuration:
+      operation: subtraction
+      flip: false
+      value: '259200'
+      eca_data: '[vacation:field_unpaid_dates:start_date:raw]'
+      eca_token_name: offset_unpaid_time_end_timestamp
+    successors:
+      -
+        id: Activity_1ofbfit
+        condition: ''
+  Activity_0dhfi43:
+    plugin: 'eca_tamper:timetodate'
+    label: 'Paid timestamp to date'
+    configuration:
+      date_format: Y-m-d
+      eca_data: '[offset_paid_end_timestamp]'
+      eca_token_name: offset_paid_end_date
+    successors:
+      -
+        id: Activity_10qgqhq
+        condition: ''
+  Activity_1mdn0e6:
+    plugin: 'eca_tamper:timetodate'
+    label: 'Unpaid timestamp to date'
+    configuration:
+      date_format: Y-m-d
+      eca_data: '[offset_unpaid_full_end_timestamp]'
+      eca_token_name: offset_unpaid_full_end_date
+    successors:
+      -
+        id: Activity_0079i5c
+        condition: ''
+      -
+        id: Activity_1qmyvok
+        condition: ''
+      -
+        id: Activity_0mjhjy2
+        condition: ''
+  Activity_1ofbfit:
+    plugin: 'eca_tamper:timetodate'
+    label: 'Unpaid time timestamp to date'
+    configuration:
+      date_format: Y-m-d
+      eca_data: '[offset_unpaid_time_end_timestamp]'
+      eca_token_name: offset_unpaid_time_end_date
+    successors:
+      -
+        id: Activity_0i8mmbt
+        condition: ''
+      -
+        id: Activity_0rlyldx
+        condition: ''
+      -
+        id: Activity_1rdppw8
+        condition: ''
+  Activity_0pqvltb:
+    plugin: eca_views_query
+    label: 'Execute view find vacation end paid'
+    configuration:
+      token_name: vacation_list_unpaid_full
+      view_id: find_vacations_between_dates
+      display_id: end_unpaid_full
+      arguments: '[offset_paid_end_date]/[node:author:uid]'
+    successors: {  }
+  Activity_0079i5c:
+    plugin: eca_views_query
+    label: 'Execute view find vacation end unpaid full'
+    configuration:
+      token_name: vacation_list_unpaid_full
+      view_id: find_vacations_between_dates
+      display_id: end_unpaid_full
+      arguments: '[offset_unpaid_full_end_date]/[node:author:uid]'
+    successors:
+      -
+        id: Gateway_1urt8ty
+        condition: ''
+  Activity_0rlyldx:
+    plugin: eca_views_query
+    label: 'Execute view find vacation end unpaid time'
+    configuration:
+      token_name: vacation_list_unpaid_full
+      view_id: find_vacations_between_dates
+      display_id: end_unpaid_full
+      arguments: '[offset_unpaid_time_end_date]/[node:author:uid]'
+    successors:
+      -
+        id: Gateway_0ip3v0f
+        condition: ''
+  Activity_0xh3zss:
+    plugin: eca_write_log_message
+    label: msg
+    configuration:
+      channel: eca
+      severity: '1'
+      message: |-
+        MONDAY 1
+        _
+        [offset_paid_end_timestamp]
+        _
+        [offset_paid_end_date]
+        _
+        [offset_unpaid_full_end_timestamp]
+        _
+        [offset_unpaid_full_end_date]
+        _
+        [offset_unpaid_time_end_timestamp]
+        _
+        [offset_unpaid_time_end_date]
+    successors:
+      -
+        id: Gateway_0tc53by
+        condition: ''
+  Activity_0izb24g:
+    plugin: eca_views_query
+    label: 'Execute view find vacation page'
+    configuration:
+      token_name: vacation_list
+      view_id: find_vacations_between_dates
+      display_id: page_start
+      arguments: ''
+    successors:
+      -
+        id: Gateway_1v5frfl
+        condition: ''
+  Activity_041oqp6:
+    plugin: eca_views_query
+    label: 'Execute view find vacation page'
+    configuration:
+      token_name: vacation_list
+      view_id: find_vacations_between_dates
+      display_id: page_start
+      arguments: ''
+    successors:
+      -
+        id: Gateway_1v5frfl
+        condition: ''
+  Activity_1mb9xmh:
+    plugin: eca_views_query
+    label: 'Execute view find vacation page'
+    configuration:
+      token_name: vacation_list
+      view_id: find_vacations_between_dates
+      display_id: page_start
+      arguments: ''
+    successors:
+      -
+        id: Gateway_1v5frfl
+        condition: ''
+  Activity_1oas4rn:
+    plugin: eca_views_query
+    label: 'Execute view find vacation start paid'
+    configuration:
+      token_name: vacation_list_unpaid_time
+      view_id: find_vacations_between_dates
+      display_id: start_unpaid_time
+      arguments: '[offset_paid_start_date]/[node:author:uid]'
+    successors: {  }
+  Activity_1r7fg10:
+    plugin: eca_views_query
+    label: 'Execute view find vacation start paid'
+    configuration:
+      token_name: vacation_list_unpaid_full
+      view_id: find_vacations_between_dates
+      display_id: start_unpaid_full
+      arguments: '[offset_paid_start_date]/[node:author:uid]'
+    successors: {  }
+  Activity_1urt8fk:
+    plugin: eca_views_query
+    label: 'Execute view find vacation start unpaid time'
+    configuration:
+      token_name: vacation_list_paid
+      view_id: find_vacations_between_dates
+      display_id: start_paid
+      arguments: '[offset_unpaid_time_start_date]/[node:author:uid]'
+    successors:
+      -
+        id: Gateway_15z4mnd
+        condition: ''
+  Activity_0tnqw0y:
+    plugin: eca_views_query
+    label: 'Execute view find vacation start unpaid time'
+    configuration:
+      token_name: vacation_list_unpaid_time
+      view_id: find_vacations_between_dates
+      display_id: start_unpaid_time
+      arguments: '[offset_unpaid_time_start_date]/[node:author:uid]'
+    successors:
+      -
+        id: Gateway_15z4mnd
+        condition: ''
+  Activity_062njlg:
+    plugin: eca_views_query
+    label: 'Execute view find vacation start unpaid full'
+    configuration:
+      token_name: vacation_list_paid
+      view_id: find_vacations_between_dates
+      display_id: start_paid
+      arguments: '[offset_unpaid_full_start_date]/[node:author:uid]'
+    successors:
+      -
+        id: Gateway_0v65rsv
+        condition: ''
+  Activity_08m478s:
+    plugin: eca_views_query
+    label: 'Execute view find vacation start unpaid full'
+    configuration:
+      token_name: vacation_list_unpaid_time
+      view_id: find_vacations_between_dates
+      display_id: start_unpaid_time
+      arguments: '[offset_unpaid_full_start_date]/[node:author:uid]'
+    successors:
+      -
+        id: Gateway_0v65rsv
+        condition: ''
+  Activity_01qxrhc:
+    plugin: eca_views_query
+    label: 'Execute view find vacation end paid'
+    configuration:
+      token_name: vacation_list_unpaid_time
+      view_id: find_vacations_between_dates
+      display_id: end_unpaid_time
+      arguments: '[offset_paid_end_date]/[node:author:uid]'
+    successors: {  }
+  Activity_10qgqhq:
+    plugin: eca_views_query
+    label: 'Execute view find vacation end paid'
+    configuration:
+      token_name: vacation_list_paid
+      view_id: find_vacations_between_dates
+      display_id: end_paid
+      arguments: '[offset_paid_end_date]/[node:author:uid]'
+    successors:
+      -
+        id: Gateway_0j7pj6e
+        condition: ''
+  Activity_1rdppw8:
+    plugin: eca_views_query
+    label: 'Execute view find vacation end unpaid time'
+    configuration:
+      token_name: vacation_list_paid
+      view_id: find_vacations_between_dates
+      display_id: end_paid
+      arguments: '[offset_unpaid_time_end_date]/[node:author:uid]'
+    successors:
+      -
+        id: Gateway_0ip3v0f
+        condition: ''
+  Activity_0i8mmbt:
+    plugin: eca_views_query
+    label: 'Execute view find vacation end unpaid time'
+    configuration:
+      token_name: vacation_list_unpaid_time
+      view_id: find_vacations_between_dates
+      display_id: end_unpaid_time
+      arguments: '[offset_unpaid_time_end_date]/[node:author:uid]'
+    successors:
+      -
+        id: Gateway_0ip3v0f
+        condition: ''
+  Activity_1qmyvok:
+    plugin: eca_views_query
+    label: 'Execute view find vacation end unpaid full'
+    configuration:
+      token_name: vacation_list_unpaid_time
+      view_id: find_vacations_between_dates
+      display_id: end_unpaid_time
+      arguments: '[offset_unpaid_full_end_date]/[node:author:uid]'
+    successors:
+      -
+        id: Gateway_1urt8ty
+        condition: ''
+  Activity_0mjhjy2:
+    plugin: eca_views_query
+    label: 'Execute view find vacation end unpaid full'
+    configuration:
+      token_name: vacation_list_paid
+      view_id: find_vacations_between_dates
+      display_id: end_paid
+      arguments: '[offset_unpaid_full_end_date]/[node:author:uid]'
+    successors:
+      -
+        id: Gateway_1urt8ty
+        condition: ''
+  Activity_0qpobwv:
+    plugin: eca_write_log_message
+    label: msg
+    configuration:
+      channel: eca
+      severity: '1'
+      message: |-
+        FRIDAY 1
+        _
+        [offset_paid_start_timestamp]
+        _
+        [offset_paid_start_date]
+        _
+        [offset_unpaid_full_start_timestamp]
+        _
+        [offset_unpaid_full_start_date]
+        _
+        [offset_unpaid_time_start_timestamp]
+        _
+        [offset_unpaid_time_start_date]
+    successors:
+      -
+        id: Gateway_0kal6nz
+        condition: ''
+  Activity_1uaien7:
+    plugin: eca_write_log_message
+    label: msg
+    configuration:
+      channel: eca
+      severity: '1'
+      message: |-
+        FRIDAY 2
+        _
+        [vacation:field_paid_dates:end_date:custom:D]
+        _
+        [vacation:field_unpaid_dates_full:start_date:custom:D]
+        _
+        [vacation:field_unpaid_dates:start_date:custom:D]
+        _
+        [vacation_list_paid]
+        _
+        [vacation_list_unpaid_full]
+        _
+        [vacation_list_unpaid_time]
+    successors:
+      -
+        id: Activity_0amcjmy
+        condition: ''
+  Activity_0amcjmy:
+    plugin: eca_form_field_set_error
+    label: 'Set validation error'
+    configuration:
+      message: 'ERROR! We have noticed attempts to divide paid vacation time, this is not allowed!'
+      field_name: field_paid_dates
+    successors: {  }
+  Activity_0kuf0q6:
+    plugin: eca_write_log_message
+    label: msg
+    configuration:
+      channel: eca
+      severity: '1'
+      message: |-
+        FRIDAY 1
+        _
+        [offset_paid_start_timestamp]
+        _
+        [offset_paid_start_date]
+        _
+        [offset_unpaid_full_start_timestamp]
+        _
+        [offset_unpaid_full_start_date]
+        _
+        [offset_unpaid_time_start_timestamp]
+        _
+        [offset_unpaid_time_start_date]
+    successors:
+      -
+        id: Gateway_0xudj2m
+        condition: ''
+  Activity_13nyfxl:
+    plugin: eca_write_log_message
+    label: msg
+    configuration:
+      channel: eca
+      severity: '1'
+      message: |-
+        FRIDAY 2
+        _
+        [vacation:field_paid_dates:end_date:custom:D]
+        _
+        [vacation:field_unpaid_dates_full:start_date:custom:D]
+        _
+        [vacation:field_unpaid_dates:start_date:custom:D]
+        _
+        [vacation_list_paid]
+        _
+        [vacation_list_unpaid_full]
+        _
+        [vacation_list_unpaid_time]
+    successors:
+      -
+        id: Activity_0ghl7gf
+        condition: ''
+  Activity_0ghl7gf:
+    plugin: eca_form_field_set_error
+    label: 'Set validation error'
+    configuration:
+      message: 'ERROR! NO NO NO BRO, STOP! U THINK I AM STUPID!? FRIDAY'
+      field_name: field_unpaid_dates
+    successors: {  }
+  Activity_0fmdjl0:
+    plugin: eca_form_field_set_error
+    label: 'Set validation error'
+    configuration:
+      message: 'ERROR! We have noticed attempts to divide paid vacation time, this is not allowed!'
+      field_name: field_paid_dates
+    successors: {  }
+  Activity_1mw1ker:
+    plugin: eca_form_field_set_error
+    label: 'Set validation error'
+    configuration:
+      message: 'ERROR! NO NO NO BRO, STOP! U THINK I AM STUPID!? MONDAY!'
+      field_name: field_unpaid_dates_full
+    successors: {  }
+  Activity_1fy4a9t:
+    plugin: eca_write_log_message
+    label: msg
+    configuration:
+      channel: eca
+      severity: '1'
+      message: |-
+        MONDAY 2
+        _
+        [vacation:field_paid_dates:end_date:custom:D]
+        _
+        [vacation:field_unpaid_dates_full:start_date:custom:D]
+        _
+        [vacation:field_unpaid_dates:start_date:custom:D]
+        _
+        [vacation_list_paid]
+        _
+        [vacation_list_unpaid_full]
+        _
+        [vacation_list_unpaid_time]
+    successors:
+      -
+        id: Activity_0fmdjl0
+        condition: ''
+  Activity_1wbrn0f:
+    plugin: eca_write_log_message
+    label: msg
+    configuration:
+      channel: eca
+      severity: '1'
+      message: |-
+        MONDAY 2
+        _
+        [vacation:field_paid_dates:end_date:custom:D]
+        _
+        [vacation:field_unpaid_dates_full:start_date:custom:D]
+        _
+        [vacation:field_unpaid_dates:start_date:custom:D]
+        _
+        [vacation_list_paid]
+        _
+        [vacation_list_unpaid_full]
+        _
+        [vacation_list_unpaid_time]
+    successors:
+      -
+        id: Activity_1mw1ker
+        condition: ''
+  Activity_05h4a5d:
+    plugin: eca_write_log_message
+    label: msg
+    configuration:
+      channel: eca
+      severity: '1'
+      message: |-
+        MONDAY 1
+        _
+        [offset_paid_end_timestamp]
+        _
+        [offset_paid_end_date]
+        _
+        [offset_unpaid_full_end_timestamp]
+        _
+        [offset_unpaid_full_end_date]
+        _
+        [offset_unpaid_time_end_timestamp]
+        _
+        [offset_unpaid_time_end_date]
+    successors:
+      -
+        id: Gateway_0zcej0t
+        condition: ''
+  Activity_14jj69t:
+    plugin: eca_write_log_message
+    label: msg
+    configuration:
+      channel: eca
+      severity: '1'
+      message: |-
+        MONDAY 1
+        _
+        [offset_paid_end_timestamp]
+        _
+        [offset_paid_end_date]
+        _
+        [offset_unpaid_full_end_timestamp]
+        _
+        [offset_unpaid_full_end_date]
+        _
+        [offset_unpaid_time_end_timestamp]
+        _
+        [offset_unpaid_time_end_date]
+    successors:
+      -
+        id: Gateway_0eu63r9
+        condition: ''
+  Activity_0vsyve0:
+    plugin: eca_views_query
+    label: 'Execute query'
+    configuration:
+      token_name: user_vacation_list
+      view_id: my_vacation_requests
+      display_id: entity_reference_1
+      arguments: '[node:author:uid]'
+    successors:
+      -
+        id: Activity_0cjvqn8
+        condition: ''
+  Activity_0cjvqn8:
+    plugin: eca_write_log_message
+    label: msg
+    configuration:
+      channel: eca
+      severity: '4'
+      message: |-
+        CROSS DATE 11
+        _
+        [vacation:field_paid_state:entity:tid]
+        _
+        [vacation:field_unpaid_type:entity:tid]
+        _
+        [user_vacation_list]
+        _
+        [vacation:field_paid_dates:value]
+        _
+        [vacation:field_paid_dates:end_value]
+        _
+        [vacation:field_unpaid_dates_full:value]
+        _
+        [vacation:field_unpaid_dates_full:end_value]
+        _
+        [vacation:field_unpaid_dates:value]
+        _
+        [vacation:field_unpaid_dates:end_value]
+    successors:
+      -
+        id: Gateway_0y6np3y
+        condition: ''
+  Activity_1uv0faw:
+    plugin: eca_write_log_message
+    label: msg
+    configuration:
+      channel: eca
+      severity: '4'
+      message: |-
+        CROSS DATE 33
+        _
+        [user_vacation_item:field_paid_dates:value]
+        _
+        [user_vacation_item:field_paid_dates:end_value]
+        _
+        [user_vacation_item:field_unpaid_dates_full:value]
+        _
+        [user_vacation_item:field_unpaid_dates_full:end_value]
+        _
+        [user_vacation_item:field_unpaid_dates:value]
+        _
+        [user_vacation_item:field_unpaid_dates:end_value]
+        ______________
+        [old_vacation_date_start]
+        _
+        [old_vacation_date_end]
+    successors:
+      -
+        id: Gateway_0msn4d8
+        condition: ''
+  Activity_11vzzof:
+    plugin: eca_list_remove
+    label: 'Take first item'
+    configuration:
+      value: ''
+      token_name: user_vacation_item
+      method: first
+      index: ''
+      list_token: user_vacation_list
+    successors:
+      -
+        id: Gateway_0jjcsy2
+        condition: ''
+  Activity_19hnln1:
+    plugin: eca_form_field_set_error
+    label: 'Set validation error'
+    configuration:
+      message: 'ERROR! The date of your vacation overlaps with other existing vacations!'
+      field_name: field_paid_dates
+    successors:
+      -
+        id: Activity_1qzlyy7
+        condition: ''
+  Activity_17pjn1c:
+    plugin: eca_form_field_set_error
+    label: 'Set validation error'
+    configuration:
+      message: 'ERROR! The date of your vacation overlaps with other existing vacations!'
+      field_name: field_paid_dates
+    successors: {  }
+  Activity_1qzlyy7:
+    plugin: eca_write_log_message
+    label: msg
+    configuration:
+      channel: eca
+      severity: '4'
+      message: |-
+        YEEEEEP
+        _
+        new_vacation
+        _
+        [vacation:field_paid_dates:start_date:raw]
+        _
+        [vacation:field_paid_dates:end_date:raw]
+        _
+        [vacation:field_paid_dates:value]
+        _
+        [vacation:field_paid_dates:end_value]
+        _
+        vacation
+        _
+        [user_vacation_item:field_paid_dates:start_date:raw]
+        _
+        [user_vacation_item:field_paid_dates:end_date:raw]
+        _
+        [user_vacation_item:field_paid_dates:value]
+        _
+        [user_vacation_item:field_paid_dates:end_value]
+    successors: {  }
+  Activity_0yqa6hu:
+    plugin: eca_write_log_message
+    label: msg
+    configuration:
+      channel: eca
+      severity: '4'
+      message: |-
+        CROSS DATE 22
+        _
+        [vacation:field_paid_dates:start_date:raw]
+        _
+        [vacation:field_paid_dates:end_date:raw]
+        _
+        [vacation:field_unpaid_dates_full:start_date:raw]
+        _
+        [vacation:field_unpaid_dates_full:end_date:raw]
+        _
+        [vacation:field_unpaid_dates:start_date:raw]
+        _
+        [vacation:field_unpaid_dates:end_date:raw]
+        ______________
+        [new_vacation_date_start]
+        _
+        [new_vacation_date_end]
+        _______
+        [current-date:raw]
+        _______
+        [user_vacation_list]
+    successors:
+      -
+        id: Gateway_151yhwx
+        condition: Flow_17z1buo
+  Activity_00iq78h:
+    plugin: eca_write_log_message
+    label: msg
+    configuration:
+      channel: eca
+      severity: '4'
+      message: |-
+        VAC ITEM 22
+        _
+        new_vacation
+        _
+        [vacation:field_paid_dates:start_date:raw]
+        _
+        [vacation:field_paid_dates:end_date:raw]
+        _
+        [vacation:field_paid_dates:value]
+        _
+        [vacation:field_paid_dates:end_value]
+        _
+        vacation
+        _
+        [user_vacation_item:field_paid_dates:start_date:raw]
+        _
+        [user_vacation_item:field_paid_dates:end_date:raw]
+        _
+        [user_vacation_item:field_paid_dates:value]
+        _
+        [user_vacation_item:field_paid_dates:end_value]
+        _____________________
+        [vacation:field_paid_dates:end_date:raw]
+        _
+        [user_vacation_item:field_paid_dates:start_date:raw]
+    successors: {  }
+  Activity_14y4tqo:
+    plugin: eca_token_set_value
+    label: "Set old\_vacation start date token"
+    configuration:
+      token_name: old_vacation_date_start
+      token_value: '[user_vacation_item:field_paid_dates:start_date:raw]'
+      use_yaml: false
+    successors:
+      -
+        id: Activity_07vq058
+        condition: ''
+  Activity_07vq058:
+    plugin: eca_token_set_value
+    label: 'Set old vacation end date token'
+    configuration:
+      token_name: old_vacation_date_end
+      token_value: '[user_vacation_item:field_paid_dates:end_date:raw]'
+      use_yaml: false
+    successors:
+      -
+        id: Gateway_02sdnbd
+        condition: ''
+  Activity_05684sk:
+    plugin: eca_token_set_value
+    label: 'Set old vacation start date token'
+    configuration:
+      token_name: old_vacation_date_start
+      token_value: '[user_vacation_item:field_unpaid_dates_full:start_date:raw]'
+      use_yaml: false
+    successors:
+      -
+        id: Activity_10nr13j
+        condition: ''
+  Activity_05vmj96:
+    plugin: eca_token_set_value
+    label: 'Set old vacation start date token'
+    configuration:
+      token_name: old_vacation_date_start
+      token_value: '[user_vacation_item:field_unpaid_dates:start_date:raw]'
+      use_yaml: false
+    successors:
+      -
+        id: Activity_10pmq61
+        condition: ''
+  Activity_10nr13j:
+    plugin: eca_token_set_value
+    label: 'Set old vacation end date token'
+    configuration:
+      token_name: old_vacation_date_end
+      token_value: '[user_vacation_item:field_unpaid_dates_full:end_date:raw]'
+      use_yaml: false
+    successors:
+      -
+        id: Gateway_02sdnbd
+        condition: ''
+  Activity_10pmq61:
+    plugin: eca_token_set_value
+    label: 'Set old vacation end date token'
+    configuration:
+      token_name: old_vacation_date_end
+      token_value: '[user_vacation_item:field_unpaid_dates:end_date:raw]'
+      use_yaml: false
+    successors:
+      -
+        id: Gateway_02sdnbd
+        condition: ''
+  Activity_07s3y99:
+    plugin: eca_token_set_value
+    label: 'Set new vacation start date token'
+    configuration:
+      token_name: new_vacation_date_start
+      token_value: '[vacation:field_paid_dates:start_date:raw]'
+      use_yaml: false
+    successors:
+      -
+        id: Activity_0unnfvq
+        condition: ''
+  Activity_0unnfvq:
+    plugin: eca_token_set_value
+    label: 'Set new vacation end date token'
+    configuration:
+      token_name: new_vacation_date_end
+      token_value: '[vacation:field_paid_dates:end_date:raw]'
+      use_yaml: false
+    successors:
+      -
+        id: Gateway_0u1t5c0
+        condition: ''
+  Activity_0fdkota:
+    plugin: eca_token_set_value
+    label: 'Set new vacation end date token'
+    configuration:
+      token_name: new_vacation_date_end
+      token_value: '[vacation:field_unpaid_dates_full:end_date:raw]'
+      use_yaml: false
+    successors:
+      -
+        id: Gateway_0u1t5c0
+        condition: ''
+  Activity_0d5hz14:
+    plugin: eca_token_set_value
+    label: 'Set new vacation start date token'
+    configuration:
+      token_name: new_vacation_date_start
+      token_value: '[vacation:field_unpaid_dates:start_date:raw]'
+      use_yaml: false
+    successors:
+      -
+        id: Activity_1q4rrrf
+        condition: ''
+  Activity_1q4rrrf:
+    plugin: eca_token_set_value
+    label: 'Set new vacation end date token'
+    configuration:
+      token_name: new_vacation_date_end
+      token_value: '[vacation:field_unpaid_dates:end_date:raw]'
+      use_yaml: false
+    successors:
+      -
+        id: Gateway_0u1t5c0
+        condition: ''
+  Activity_0k1ieaw:
+    plugin: eca_token_set_value
+    label: 'Set new vacation start date token'
+    configuration:
+      token_name: new_vacation_date_start
+      token_value: '[vacation:field_unpaid_dates_full:start_date:raw]'
+      use_yaml: false
+    successors:
+      -
+        id: Activity_0fdkota
+        condition: ''
+  Activity_0528qp9:
+    plugin: eca_write_log_message
+    label: Activity_0528qp9
+    configuration:
+      channel: eca
+      severity: '3'
+      message: EMPTY
+    successors: {  }
